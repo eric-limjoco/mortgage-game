@@ -7,7 +7,7 @@
       </div>
 
       <button type="submit">
-        Create User
+        Create a User
       </button>
     </form>
 

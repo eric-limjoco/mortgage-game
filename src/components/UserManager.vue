@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
+  <div class="user-manager">
+    <h1>User Manager</h1>
+    <p>This app demonstrates writing to and reading from a Firebase database.</p>
+    <b-form @submit.prevent="onSubmit">
       <div class="form-group">
         <label>Name</label>
         <input v-model="form.name" class="form-control" required />
       </div>
-
-      <button type="submit">
+      <b-button
+        type="submit"
+        variant="success"
+      >
         Create User
-      </button>
-    </form>
-
-    <h3>User List</h3>
+      </b-button>
+    </b-form>
+    <hr>
+    <h4>User List</h4>
     <table v-if="users.length">
       <thead>
         <td>Id</td>
@@ -22,7 +26,12 @@
         <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
         <td>
-          <button @click="onDelete(user.id)"> Delete </button>
+          <b-button
+            @click="onDelete(user.id)"
+            variant="danger"
+          >
+            Delete
+          </b-button>
         </td>
       </tr>
     </table>
@@ -61,8 +70,17 @@ export default {
 }
 </script>
 <style scoped>
+.user-manager {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 32rem;
+}
 form {
+  border: 1px solid rgba(155, 159, 163, 0.712);
+  border-radius: 6px;
   margin-bottom: 3rem;
+  padding: 2rem;
+
 }
 button {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

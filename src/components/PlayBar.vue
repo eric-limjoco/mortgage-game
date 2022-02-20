@@ -85,11 +85,13 @@ export default {
 </script>
 <style scoped>
 .row .col:first-child button {
-  border-radius: 6px 0 0 6px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .row .col:last-child button {
-  border-radius: 0 6px 6px 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 button {
   border-radius: 0;

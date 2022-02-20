@@ -8,7 +8,7 @@
             variant="success"
           >
             <b-icon icon="play"></b-icon>
-            Play
+            Next Month
           </b-button>
         </b-col>
         <b-col class="px-0">
@@ -16,7 +16,7 @@
             variant="secondary"
           >
             <b-icon icon="skip-end"></b-icon>
-            Skip
+            Start Simulatioin
           </b-button>
         </b-col>
       </b-row>

@@ -27,7 +27,7 @@ export default {
         xaxis: {
           fixedrange: true
         },
-        height: 340,
+        height: 320,
         margin: {
           t: 12,
           b: 48,

@@ -3,7 +3,7 @@
 <div class="info">
   <div class="rates-info">
     <strong>
-      New Loan Rate ({{ newTerm }} months): {{ newRate }}% | Fees: ${{ newFees }}
+      New {{ newTerm/12 }} Yr Loan Rate: {{ newRate }}% | Fees: ${{ newFees }}
     </strong>
   </div>
 </div>

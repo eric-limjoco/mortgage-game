@@ -72,6 +72,7 @@ export default {
 <style scoped>
 .user-manager {
   margin: 0 auto;
+  margin-top: 60px;
   padding: 0 1rem;
   max-width: 32rem;
 }

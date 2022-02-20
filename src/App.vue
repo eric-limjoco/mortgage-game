@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <user-manager/>
+    <nav-bar/>
+    <game-home/>
   </div>
 </template>
 
 <script>
-import UserManager from './components/UserManager'
+import NavBar from './components/NavBar.vue'
+import GameHome from './components/GameHome'
 
 export default {
   name: 'App',
   components: {
-    UserManager
+    NavBar,
+    GameHome
   }
 }
 </script>
@@ -21,6 +24,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

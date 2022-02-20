@@ -1,60 +1,60 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
 <div class="play-bar">
-  <b-button-toolbar
-    key-nav
-    class="app-toolbar simulate"
-  >
-    <b-button-group
-      class="mx-1"
-    >
-      <b-button
-        size="sm"
-        variant="success"
-      >
-    <b-icon icon="play"></b-icon>
-      Play
-    </b-button>
-    <b-button
-      size="sm"
-      variant="secondary"
-    >
-      <b-icon icon="skip-end"></b-icon>
-      Skip
-    </b-button>
-    </b-button-group>
-  </b-button-toolbar>
-  <b-button-toolbar
-    key-nav
-    class="app-toolbar actions"
-  >
-    <b-button-group class="mx-1">
-      <b-button
-        size="sm"
-        variant="success"
-        @click="refi()"
-      >
-        <b-icon icon="arrow-repeat"></b-icon>
-        Refinance
-      </b-button>
-      <b-button
-        size="sm"
-        variant="secondary"
-        @click="cashout()"
-      >
-        <b-icon icon="cash-stack"></b-icon>
-        Cashout
-      </b-button>
-      <b-button
-        size="sm"
-        variant="danger"
-        @click="payoff()"
-      >
-        <b-icon icon="house-door"></b-icon>
-        Payoff
-      </b-button>
-    </b-button-group>
-  </b-button-toolbar>
+  <b-container fluid class="mb-3">
+      <b-row class="mb-2">
+        <b-col class="px-0">
+          <b-button
+            variant="success"
+          >
+            <b-icon icon="play"></b-icon>
+            Play
+          </b-button>
+        </b-col>
+        <b-col class="px-0">
+          <b-button
+            variant="secondary"
+          >
+            <b-icon icon="skip-end"></b-icon>
+            Skip
+          </b-button>
+        </b-col>
+      </b-row>
+      <b-row class="mb-2">
+        <b-col class="px-0">
+          <b-button
+            size="sm"
+            variant="success"
+            @click="refi()"
+          >
+            <b-icon icon="arrow-repeat"></b-icon>
+            Refinance
+          </b-button>
+        </b-col>
+        <b-col class="px-0">
+          <b-button
+            size="sm"
+            variant="secondary"
+            @click="cashout()"
+          >
+            <b-icon icon="cash-stack"></b-icon>
+            Cashout
+          </b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col class="px-0">
+          <b-button
+            size="sm"
+            variant="danger"
+            @click="payoff()"
+          >
+            <b-icon icon="house-door"></b-icon>
+            Payoff
+          </b-button>
+        </b-col>
+      </b-row>
+  </b-container>
 </div>
 </template>
 <script>
@@ -84,10 +84,15 @@ export default {
 }
 </script>
 <style scoped>
-.play-bar {
-  margin-bottom: 2rem;
+.row .col:first-child button {
+  border-radius: 6px 0 0 6px;
 }
-.app-toolbar {
-  margin-bottom: 1rem;
+
+.row .col:last-child button {
+  border-radius: 0 6px 6px 0;
+}
+button {
+  border-radius: 0;
+  width: 100%;
 }
 </style>

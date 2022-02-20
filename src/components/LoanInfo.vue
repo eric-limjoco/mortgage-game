@@ -1,12 +1,11 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
-<div class="loan-info">
+<div class="info">
   <b-card
     title="Loan"
   >
-    <div>Current Balance: ${{ balance }}</div>
-    <div>Remaining Term {{ remainingTerm }} months</div>
-    <div>Current Rate: {{ loanRate }}%</div>
+    <div>${{ balance }} / {{ loanRate }}%</div>
+    <div>Remaining Term: {{ remainingTerm }} months</div>
     <div>Current Payment: ${{ payment }}</div>
   </b-card>
 </div>
@@ -25,10 +24,7 @@ export default {
 }
 </script>
 <style scoped>
-.game {
-  margin: 0 auto;
-  margin-top: 40px;
-  padding: 0 1rem;
-  max-width: 32rem;
+.info {
+  font-size: .8rem;
 }
 </style>

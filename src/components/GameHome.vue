@@ -5,19 +5,23 @@
     <p>
       Pay off the loan with the minimum amount of money possible.
     </p>
-    <div class="controls">
-      <play-bar />
-    </div>
     <b-alert
       :show="message.length>0"
     >
       {{ message }}
     </b-alert>
+    <b-container-fluid class="info">
+      <b-row>
+        <b-col><financial-info /></b-col>
+        <b-col><loan-info /></b-col>
+      </b-row>
+      <b-row>
+        <b-col><rates-info /></b-col>
+      </b-row>
+    </b-container-fluid>
     <rate-chart />
-    <div class="info">
-      <financial-info />
-      <loan-info />
-      <rates-info />
+    <div class="controls">
+      <play-bar />
     </div>
   </div>
 </div>
@@ -55,9 +59,6 @@ navbar {
   margin: 0 auto;
   margin-top: 80px;
   padding: 0 1rem;
-  max-width: 32rem;
-}
-.info {
-  margin-bottom: 6rem;
+  max-width: 64rem;
 }
 </style>

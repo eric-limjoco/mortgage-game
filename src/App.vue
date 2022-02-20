@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <b-container fluid id="app">
     <nav-bar/>
     <game-home/>
-  </div>
+  </b-container>
 </template>
 
 <script>

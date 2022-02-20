@@ -17,11 +17,16 @@ export default {
     return {
       data: [{
         x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17],
+        y: [1, 2, 3, 4],
         type: 'scatter'
       }],
       layout: {
-        title: 'Rate History'
+        yaxis: {
+          fixedrange: true
+        },
+        xaxis: {
+          fixedrange: true
+        }
       }
     }
   },

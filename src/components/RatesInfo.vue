@@ -1,6 +1,6 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
-<div class="rates-info">
+<div class="info">
   <b-card
     title="Rates"
   >
@@ -24,10 +24,7 @@ export default {
 }
 </script>
 <style scoped>
-.game {
-  margin: 0 auto;
-  margin-top: 40px;
-  padding: 0 1rem;
-  max-width: 32rem;
+.info {
+  font-size: .8rem;
 }
 </style>

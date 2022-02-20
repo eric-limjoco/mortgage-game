@@ -2,16 +2,8 @@
 <template>
 <div>
   <div class="game">
-    <p>
-      Pay off the loan with the minimum amount of money possible.
-    </p>
-    <b-alert
-      :show="message.length>0"
-    >
-      {{ message }}
-    </b-alert>
     <b-container-fluid class="info">
-      <b-row>
+      <b-row class="mb-4">
         <b-col><financial-info /></b-col>
         <b-col><loan-info /></b-col>
       </b-row>

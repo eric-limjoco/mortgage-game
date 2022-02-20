@@ -26,6 +26,12 @@ export default {
         },
         xaxis: {
           fixedrange: true
+        },
+        margin: {
+          t: 12,
+          b: 24,
+          l: 24,
+          r: 24
         }
       }
     }

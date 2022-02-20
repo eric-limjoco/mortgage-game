@@ -1,13 +1,11 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
 <div class="info">
-  <b-card
-    title="Rates"
-  >
-    <div>Term: {{ newTerm }} months</div>
-    <div>Rate: {{ newRate }}%</div>
-    <div>Fees: ${{ newFees }}</div>
-  </b-card>
+  <div class="rates-info">
+    <strong>
+      New Loan Rate ({{ newTerm }} months): {{ newRate }}% | Fees: ${{ newFees }}
+    </strong>
+  </div>
 </div>
 </template>
 <script>
@@ -26,5 +24,8 @@ export default {
 <style scoped>
 .info {
   font-size: .8rem;
+}
+.rates-info {
+  text-align: center;
 }
 </style>

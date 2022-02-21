@@ -17,8 +17,7 @@ export default {
     return {
       layout: {
         xaxis: {
-          range: [0, 360],
-          title: 'Month'
+          range: [0, 360]
         },
         yaxis: {
           range: [0, 8],

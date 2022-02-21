@@ -10,7 +10,7 @@
       {{ balance|toCurrency }}
     </div>
     <div class="current-loan-info">
-      {{ Math.round(loanRate * 100) / 100}}% / {{ remainingTerm }} months remaining
+      {{ Math.round(loanRate * 100) / 100}}% / {{ remainingTerm }} months
     </div>
     <template #footer>
       <div class="monthly-payment">

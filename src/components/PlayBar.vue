@@ -10,6 +10,16 @@
   >
     <p>{{ modalMessage }}</p>
   </b-modal>
+  <b-modal
+    id="modal-play-gameover"
+    ref="modal-play-gameover"
+    :title="modalTitle"
+    hide-header-close
+    ok-only
+    @ok="initState"
+  >
+    <p>{{ modalMessage }}</p>
+  </b-modal>
   <b-container fluid class="mb-3">
       <b-row class="mb-2">
         <b-col class="px-0">
@@ -46,7 +56,7 @@
           <b-button
             size="sm"
             variant="secondary"
-            @click="cashout()"
+            @click="startCashout"
           >
             <b-icon icon="cash-stack"></b-icon>
             Cashout
@@ -58,7 +68,7 @@
           <b-button
             size="sm"
             variant="danger"
-            @click="payoff()"
+            @click="startPayoff"
           >
             <b-icon icon="house-door"></b-icon>
             Payoff
@@ -80,14 +90,20 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'balance', 'gameover'])
+    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore'])
   },
   methods: {
-    ...mapMutations(['refi', 'cashout', 'makePayment', 'updateRates', 'initState']),
-    simulate (n) {
+    ...mapMutations(['refi', 'cashout', 'payoff', 'makePayment', 'updateRates', 'initState', 'calculateSavingsScore']),
+    sleep (duration) {
+      return new Promise(resolve => {
+        setTimeout(() => { resolve() }, duration)
+      })
+    },
+    async simulate (n) {
       for (let i = 0; i < n; i++) {
         this.makePayment()
         this.updateRates()
+        await this.sleep(1)
       }
     },
     startRefi () {
@@ -108,22 +124,24 @@ export default {
         this.cashout()
       }
     },
-    payoff () {
+    startPayoff () {
       if (this.cash < this.balance) {
         this.modalTitle = 'Cannot Payoff Mortgage'
         this.modalMessage = "You don't have enough cash to payoff your mortgage"
         this.$refs['modal-play'].show()
       } else {
-        this.refi()
+        this.payoff()
       }
     }
   },
   watch: {
     gameOver () {
-      this.modalTitle = 'Game Over'
-      this.modalMessage = 'Game Over!'
-      this.$refs['modal-play'].show()
-      this.initState()
+      if (this.gameOver) {
+        this.calculateSavingsScore()
+        this.modalTitle = 'Game Over'
+        this.modalMessage = `Game Over! Savings Score: ${this.savingsScore}`
+        this.$refs['modal-play-gameover'].show()
+      }
     }
   },
   components: {

@@ -33,7 +33,12 @@ export default new Vuex.Store({
     gameOver: false,
     go: false,
     breakPayoff: true,
-    showOptimal: false
+    showOptimal: false,
+    savingsScore: 0,
+    lowestPayments: 0,
+    totalPaymentsNaive: 0,
+    maxSavings: 0,
+    savings: 0
   },
   getters,
   mutations,

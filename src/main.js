@@ -10,6 +10,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
+Vue.filter('toCurrency', function (value) {
+  if (typeof value !== 'number') return value
+  let formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  })
+  return formatter.format(value)
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -26,13 +26,14 @@ export default new Vuex.Store({
     optimalRateHistory: [],
     optimalRateHistory2: [],
     threshold: 1.0,
+    newRate: 4,
+    minRate: 4,
+    recordRate: 4,
+    message: '',
     gameOver: false,
     go: false,
     breakPayoff: true,
-    newRate: 4,
-    minRate: 4,
-    recordRate: null,
-    message: ''
+    showOptimal: false
   },
   getters,
   mutations,

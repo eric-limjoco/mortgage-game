@@ -7,16 +7,16 @@
   >
     <div class="current-balance h4">
       <b-icon icon="cash"></b-icon>
-      ${{ balance }}
+      {{ balance|toCurrency }}
     </div>
     <div class="current-loan-info">
-      {{ loanRate }}% / {{ remainingTerm }} months
+      {{ Math.round(loanRate * 100) / 100}}% / {{ remainingTerm }} months remaining
     </div>
     <template #footer>
       <div class="monthly-payment">
         <span class="info-label">Monthly Payment</span>
       </div>
-      ${{ payment }}
+      {{ payment|toCurrency }}
     </template>
   </b-card>
 </div>

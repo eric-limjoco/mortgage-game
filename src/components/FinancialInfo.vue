@@ -7,17 +7,17 @@
   >
     <div class="current-cash h4">
       <b-icon icon="cash"></b-icon>
-      ${{ cash }}
+      {{ cash|toCurrency }}
     </div>
     <div class="income">
       <b-icon icon="plus-circle"></b-icon>
-      ${{ income }}/month
+      {{ income|toCurrency }}/month
     </div>
     <template #footer>
       <div class="total-payments">
         <span class="info-label">Total Payments</span>
       </div>
-      ${{ cumulativePayments }}
+      {{ cumulativePayments|toCurrency}}
     </template>
   </b-card>
 </div>

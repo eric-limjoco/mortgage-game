@@ -2,7 +2,7 @@
 <template>
 <div>
   <div class="game">
-    <b-container-fluid class="info">
+    <b-container fluid class="info">
       <b-row class="mb-4">
         <b-col><financial-info /></b-col>
         <b-col><loan-info /></b-col>
@@ -10,7 +10,7 @@
       <b-row>
         <b-col><rates-info /></b-col>
       </b-row>
-    </b-container-fluid>
+    </b-container >
     <rate-chart />
     <div class="controls">
       <play-bar />
@@ -19,7 +19,7 @@
 </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import PlayBar from './PlayBar.vue'
 import RateChart from './RateChart.vue'
 import FinancialInfo from './FinancialInfo.vue'
@@ -33,6 +33,12 @@ export default {
   },
   computed: {
     ...mapState(['message'])
+  },
+  mounted () {
+    this.initState()
+  },
+  methods: {
+    ...mapMutations(['initState'])
   },
   components: {
     PlayBar,

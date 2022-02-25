@@ -6,18 +6,15 @@ function randN (mean, standardDev) {
   return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * standardDev + mean
 }
 function monthlyPayment (balance, remainingTerm, loanRate) {
-  let r = loanRate / 1200
-  return (balance * r) / (1 - (Math.pow((1 + r), remainingTerm * -1)))
+  return (balance * (loanRate / 1200)) / (1 - (Math.pow((1 + (loanRate / 1200)), remainingTerm * -1)))
 }
 function interestPayment (balance, remainingTerm, loanRate) {
-  let interest = balance * loanRate / 1200
-  return interest
+  return balance * loanRate / 1200
 }
 function principalPayment (balance, remainingTerm, loanRate) {
   let payment = monthlyPayment(balance, remainingTerm, loanRate)
   let interest = interestPayment(balance, remainingTerm, loanRate)
-  let principal = payment - interest
-  return principal
+  return payment - interest
 }
 function scheduledBalance (balance, term, loanRate, age) {
   let r = loanRate / 1200
@@ -27,13 +24,17 @@ function scheduledBalance (balance, term, loanRate, age) {
 export default {
   initState (state) {
     state.loanRate = 4
+    state.startingRate = state.loanRate
     state.cash = 0
     state.income = 4000
     state.balance = 400000
     state.remainingTerm = 360
+    state.startingTerm = state.remainingTerm
     state.payment = 1909.66
+    state.startingPayment = state.payment
     state.cumulativePayments = 0
     state.originalBalance = 400000
+    state.startingBalance = state.originalBalance
     state.newTerm = 360
     state.newFees = 4000
     state.change = 0.005
@@ -100,46 +101,42 @@ export default {
   },
   payoff (state) {
     state.cash = state.cash - state.balance
-    state.balance = 0
     state.cumulativePayments += state.balance
+    state.balance = 0
     state.gameOver = true
   },
   calculateSavingsScore (state) {
     // assume you refi-ed at min rate
-    let startingPayment = 1909.66
-    let startingTerm = 360
-    let startingBalance = 400000
-    let startingRate = 4
     let payoffAge = 142
-    let payoffBal = scheduledBalance(startingBalance, startingTerm, startingRate, payoffAge)
-    var totalPaymentsNaive = startingPayment * startingTerm
+    let payoffBal = scheduledBalance(state.startingBalance, state.startingTerm, state.startingRate, payoffAge)
+    var totalPaymentsNaive = state.startingPayment * state.startingTerm
 
-    var oMinRate = Math.min.apply(Math, state.rateHistory.slice(0, payoffAge))
+    var oMinRate = Math.min(...state.rateHistory.slice(0, payoffAge))
     var oMinAge = state.rateHistory.indexOf(oMinRate)
-    var oMinBalance = scheduledBalance(startingBalance, startingTerm, startingRate, oMinAge)
-    var oMinPayment = monthlyPayment(oMinBalance, startingTerm, oMinRate)
+    var oMinBalance = scheduledBalance(state.startingBalance, state.startingTerm, state.startingRate, oMinAge)
+    var oMinPayment = monthlyPayment(oMinBalance, state.startingTerm, oMinRate)
 
     for (let i = 0; i < payoffAge; i++) {
       if (i < oMinAge) {
-        state.optimalRateHistory[i] = startingRate
+        state.optimalRateHistory[i] = state.startingRate
       } else {
         state.optimalRateHistory[i] = oMinRate
       }
     }
     // not completely accurate because we didnt re-amortize at refi;
-    let totalPaymentsOMinRate = startingPayment * oMinAge + oMinPayment * (payoffAge - oMinAge) + payoffBal
+    let totalPaymentsOMinRate = (state.startingPayment * oMinAge) + (oMinPayment * (payoffAge - oMinAge)) + payoffBal
 
     var lowestPayments = Math.min(totalPaymentsNaive, totalPaymentsOMinRate)
     var savings = totalPaymentsNaive - state.cumulativePayments
     var maxSavings = totalPaymentsNaive - lowestPayments
 
     state.savingsScore = 0
-    if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings) * 100 / 1 * 100
+    if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings).toFixed(2)
 
     state.lowestPayments = lowestPayments
     state.totalPaymentsNaive = totalPaymentsNaive
     state.maxSavings = maxSavings
     state.savings = savings
-    state.drawOptimal = true
+    state.showOptimal = true
   }
 }

@@ -139,7 +139,7 @@ export default {
       if (this.gameOver) {
         this.calculateSavingsScore()
         this.modalTitle = 'Game Over'
-        this.modalMessage = `Game Over! Savings Score: ${this.savingsScore}`
+        this.modalMessage = `Savings Score: ${this.savingsScore}%`
         this.$refs['modal-play-gameover'].show()
       }
     }

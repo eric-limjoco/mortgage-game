@@ -38,7 +38,11 @@ export default new Vuex.Store({
     lowestPayments: 0,
     totalPaymentsNaive: 0,
     maxSavings: 0,
-    savings: 0
+    savings: 0,
+    startingPayment: 1909.66,
+    startingTerm: 360,
+    startBalance: 400000,
+    startingRate: 4
   },
   getters,
   mutations,

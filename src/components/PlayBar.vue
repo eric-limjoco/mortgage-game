@@ -31,6 +31,8 @@
             Play Next Month
           </b-button>
         </b-col>
+      </b-row>
+      <b-row class="mb-2">
         <b-col class="px-0">
           <b-button
             variant="secondary"
@@ -62,8 +64,6 @@
             Cashout
           </b-button>
         </b-col>
-      </b-row>
-      <b-row>
         <b-col class="px-0">
           <b-button
             size="sm"

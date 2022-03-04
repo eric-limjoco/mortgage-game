@@ -17,11 +17,13 @@ export default {
     return {
       layout: {
         xaxis: {
-          range: [0, 360]
+          range: [0, 360],
+          fixedrange: true
         },
         yaxis: {
           range: [0, 8],
-          title: 'Rate'
+          title: 'Rate',
+          fixedrange: true
         },
         height: 320,
         margin: {

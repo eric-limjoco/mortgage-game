@@ -1,21 +1,20 @@
-// eslint-disable-next-line vue/multi-word-component-names
 <template>
-<div>
-  <div class="game">
-    <b-container fluid class="info">
-      <b-row class="mb-4">
-        <b-col><financial-info /></b-col>
-        <b-col><loan-info /></b-col>
-      </b-row>
-      <b-row>
-        <b-col><rates-info /></b-col>
-      </b-row>
-    </b-container >
-    <rate-chart />
-    <div class="controls">
-      <play-bar />
-    </div>
-  </div>
+<div class="game">
+  <b-container fluid>
+    <b-row>
+      <b-col><financial-info /></b-col>
+    </b-row>
+    <b-row>
+      <b-col><loan-info /></b-col>
+      <b-col><rates-info /></b-col>
+    </b-row>
+    <b-row>
+      <rate-chart />
+    </b-row>
+    <b-row>
+        <play-bar />
+    </b-row>
+  </b-container >
 </div>
 </template>
 <script>
@@ -54,9 +53,12 @@ navbar {
   width: 100%;
 }
 .game {
+  /* border: 1px solid red; */
   margin: 0 auto;
-  margin-top: 80px;
-  padding: 0 1rem;
+  margin-top: 3.6rem;
   max-width: 64rem;
+}
+.col {
+  padding: 0;
 }
 </style>

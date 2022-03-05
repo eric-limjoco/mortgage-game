@@ -1,29 +1,23 @@
-// eslint-disable-next-line vue/multi-word-component-names
 <template>
-<div class="info">
-  <b-card
-    header="Finances"
-    footer-tag="footer"
-  >
-    <div class="current-cash h4">
-      <b-icon icon="cash"></b-icon>
-      {{ cash|toCurrency }}
-    </div>
-    <div class="income">
-      <b-icon icon="plus-circle"></b-icon>
-      {{ income|toCurrency }}/month
-    </div>
-    <template #footer>
-      <div class="total-payments">
-        <span class="info-label">Total Payments</span>
+<b-container fluid class="info">
+  <b-row>
+    <b-col class="h4">
+        <b-icon icon="cash"></b-icon>
+        <span>{{ cash|toCurrency }}</span>
+        <div class="income mt-1">
+          <b-icon icon="plus-circle"></b-icon> {{ income|toCurrency }}/month
+        </div>
+    </b-col>
+    <b-col>
+      <div class="payments">
+        <span class="payments-label">Total Payments</span>: {{ cumulativePayments|toCurrency}}
       </div>
-      {{ cumulativePayments|toCurrency}}
-    </template>
-  </b-card>
-</div>
+    </b-col>
+  </b-row>
+</b-container>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import { BIcon } from 'bootstrap-vue'
 
 export default {
@@ -34,10 +28,6 @@ export default {
   computed: {
     ...mapState(['cash', 'income', 'cumulativePayments'])
   },
-  mounted () {},
-  methods: {
-    ...mapGetters(['isLoggedIn'])
-  },
   components: {
     BIcon
   }
@@ -45,10 +35,19 @@ export default {
 </script>
 <style scoped>
 .info {
+  /* border: 1px solid green; */
   font-size: .8rem;
+  padding: 0;
 }
-.info-label {
+.income {
   font-size: .6rem;
+}
+.payments {
+  display: block;
+  float: right;
+}
+.payments-label {
+  font-size: .8rem;
   font-weight: 600;
 }
 </style>

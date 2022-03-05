@@ -1,6 +1,6 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
-<div class="rate-chart">
+<div class="chart">
   <Plotly
     :data="data"
     :layout="layout"
@@ -18,14 +18,19 @@ export default {
       layout: {
         xaxis: {
           range: [0, 360],
-          fixedrange: true
+          fixedrange: true,
+          showgrid: false,
+          showticklabels: false,
+          color: '#969696',
+          zerolinecolor: '#969696'
         },
         yaxis: {
           range: [0, 8],
-          title: 'Rate',
-          fixedrange: true
+          fixedrange: true,
+          color: '#969696',
+          zerolinecolor: '#969696'
         },
-        height: 320,
+        height: 300,
         margin: {
           t: 12,
           b: 48,
@@ -36,7 +41,10 @@ export default {
         legend: {
           x: 1,
           y: 1,
-          xanchor: 'right'
+          xanchor: 'right',
+          font: {
+            color: '#969696'
+          }
         }
       }
     }
@@ -51,13 +59,21 @@ export default {
         x: xvals,
         y: this.rateHistory,
         mode: 'lines',
-        name: 'Market Rate'
+        name: 'Market Rate',
+        line: {
+          color: '#415952',
+          width: 1
+        }
       }
       var rates2 = {
         x: xvals,
         y: this.userRateHistory,
         mode: 'lines',
-        name: 'Your Loan Rate'
+        name: 'Your Loan Rate',
+        line: {
+          color: 'rgb(128, 0, 128)',
+          width: 2
+        }
       }
       var rates3 = {
         x: x2vals,
@@ -82,4 +98,8 @@ export default {
 }
 </script>
 <style scoped>
+.chart {
+  /* border: 1px solid orange; */
+  padding: 0;
+}
 </style>

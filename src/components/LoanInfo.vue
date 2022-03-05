@@ -1,24 +1,17 @@
-// eslint-disable-next-line vue/multi-word-component-names
 <template>
 <div class="info">
-  <b-card
-    header="Loan"
-    footer-tag="footer"
-  >
-    <div class="current-balance h4">
-      <b-icon icon="cash"></b-icon>
-      {{ balance|toCurrency }}
-    </div>
-    <div class="current-loan-info">
-      {{ Math.round(loanRate * 100) / 100}}% / {{ remainingTerm }} months
-    </div>
-    <template #footer>
-      <div class="monthly-payment">
-        <span class="info-label">Monthly Payment</span>
-      </div>
-      {{ payment|toCurrency }}
-    </template>
-  </b-card>
+  <h5>Your Loan</h5>
+  <div>Interest Rate</div>
+  <div class="h5">
+    {{ Math.round(loanRate * 100) / 100}}%
+  </div>
+  <div>Outstanding Balance</div>
+  <div class="mb-2 h5">
+    <b-icon icon="cash"></b-icon>
+    {{ balance|toCurrency }}
+  </div>
+  <div>Months Remaining: {{ remainingTerm }} months</div>
+  <div>Monthly Payment: {{ payment|toCurrency }}</div>
 </div>
 </template>
 <script>
@@ -36,6 +29,7 @@ export default {
 </script>
 <style scoped>
 .info {
+  /* border: 1px solid blue; */
   font-size: .8rem;
 }
 .info-label {

@@ -20,21 +20,27 @@
   >
     <p>{{ modalMessage }}</p>
   </b-modal>
-  <b-container fluid class="mb-3">
-      <b-row class="mb-2">
-        <b-col class="px-0">
+  <b-container fluid>
+      <b-row>
+        <b-col class="px-1">
           <b-button
-            variant="success"
+            size="sm"
+            variant="secondary"
             @click="simulate(1)"
           >
-            <b-icon icon="play"></b-icon>
-            Play Next Month
+            <b-icon icon="skip-end"></b-icon>
+            Play 1 Month
           </b-button>
-        </b-col>
-      </b-row>
-      <b-row class="mb-2">
-        <b-col class="px-0">
           <b-button
+            size="sm"
+            variant="secondary"
+            @click="simulate(6)"
+          >
+            <b-icon icon="skip-end"></b-icon>
+            Play 6 Months
+          </b-button>
+          <b-button
+            size="sm"
             variant="secondary"
             @click="simulate(12)"
           >
@@ -42,8 +48,6 @@
             Play 12 Months
           </b-button>
         </b-col>
-      </b-row>
-      <b-row class="mb-2">
         <b-col class="px-0">
           <b-button
             size="sm"
@@ -53,8 +57,6 @@
             <b-icon icon="arrow-repeat"></b-icon>
             Refinance
           </b-button>
-        </b-col>
-        <b-col class="px-0">
           <b-button
             size="sm"
             variant="secondary"
@@ -63,8 +65,6 @@
             <b-icon icon="cash-stack"></b-icon>
             Cashout
           </b-button>
-        </b-col>
-        <b-col class="px-0">
           <b-button
             size="sm"
             variant="danger"
@@ -151,17 +151,14 @@ export default {
 }
 </script>
 <style scoped>
-.row .col:first-child button {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.row .col:last-child button {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+.play-bar {
+  /* border: 1px solid yellow; */
+  font-size: .8rem;
 }
 button {
-  border-radius: 0;
+  border-radius: 6px;
+  font-size: .8rem;
+  margin-bottom: .2rem;
   width: 100%;
 }
 </style>

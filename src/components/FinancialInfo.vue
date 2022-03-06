@@ -1,7 +1,7 @@
 <template>
 <b-container fluid class="info">
   <b-row>
-    <b-col class="h1">
+    <b-col class="h2">
         <b-icon icon="cash"></b-icon>
         <span>{{ cash|toCurrency }}</span>
         <div class="income mt-1">

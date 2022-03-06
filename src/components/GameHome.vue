@@ -1,10 +1,10 @@
 <template>
 <div class="game">
   <b-container fluid>
-    <b-row>
+    <b-row class="mb-1">
       <b-col><financial-info /></b-col>
     </b-row>
-    <b-row>
+    <b-row class="mb-1">
       <b-col><loan-info /></b-col>
       <b-col><rates-info /></b-col>
     </b-row>
@@ -55,7 +55,7 @@ navbar {
 .game {
   /* border: 1px solid red; */
   margin: 0 auto;
-  margin-top: 3.6rem;
+  margin-top: 4rem;
   max-width: 64rem;
 }
 .col {

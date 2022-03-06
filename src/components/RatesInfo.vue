@@ -1,16 +1,13 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
 <div class="info">
-  <h5>Rates</h5>
-  <div>Interest Rate</div>
+  <h5><b-icon icon="shop-window"></b-icon> Rates</h5>
+  <div>Market Rate</div>
   <div class="h5">
-    ^ {{ Math.round(newRate * 100) / 100}}%
+    <b-icon icon="caret-up-fill" class="up" font-scale="0.8"></b-icon> {{ Math.round(newRate * 100) / 100}}%
   </div>
-  <div>Term</div>
-  <div class="mb-2 h5">
-    {{ newTerm }} months
-  </div>
-  <div>Fees: ${{ newFees }}</div>
+  <small>Term: {{ newTerm }} months</small><br>
+  <small>Fees: ${{ newFees }}</small>
 </div>
 </template>
 <script>
@@ -22,7 +19,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['newTerm', 'newRate', 'newFees'])
+    ...mapState(['newTerm', 'newRate', 'newFees']),
+    newRateIcon () {
+      return 'caret-up-fill'
+    }
   }
 }
 </script>
@@ -30,5 +30,11 @@ export default {
 .info {
   /* border: 1px solid purple; */
   font-size: .8rem;
+}
+.up {
+  color: green;
+}
+.down {
+  color: red;
 }
 </style>

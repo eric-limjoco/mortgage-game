@@ -24,7 +24,7 @@
       <b-row>
         <b-col class="px-1">
           <b-button
-            size="sm"
+            size="lg"
             variant="secondary"
             @click="simulate(1)"
           >
@@ -32,15 +32,7 @@
             Play 1 Month
           </b-button>
           <b-button
-            size="sm"
-            variant="secondary"
-            @click="simulate(6)"
-          >
-            <b-icon icon="skip-end"></b-icon>
-            Play 6 Months
-          </b-button>
-          <b-button
-            size="sm"
+            size="lg"
             variant="secondary"
             @click="simulate(12)"
           >
@@ -50,7 +42,7 @@
         </b-col>
         <b-col class="px-0">
           <b-button
-            size="sm"
+            size="lg"
             variant="success"
             @click="startRefi"
           >
@@ -58,7 +50,7 @@
             Refinance
           </b-button>
           <b-button
-            size="sm"
+            size="lg"
             variant="secondary"
             @click="startCashout"
           >
@@ -66,7 +58,7 @@
             Cashout
           </b-button>
           <b-button
-            size="sm"
+            size="lg"
             variant="danger"
             @click="startPayoff"
           >

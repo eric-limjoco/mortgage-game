@@ -1,17 +1,12 @@
 <template>
 <div class="info">
-  <h5>Your Loan</h5>
-  <div>Interest Rate</div>
+  <h5><b-icon icon="house-door"></b-icon> {{ balance|toCurrency }}</h5>
+  <div>Your Interest Rate</div>
   <div class="h5">
     {{ Math.round(loanRate * 100) / 100}}%
   </div>
-  <div>Outstanding Balance</div>
-  <div class="mb-2 h5">
-    <b-icon icon="cash"></b-icon>
-    {{ balance|toCurrency }}
-  </div>
-  <div>Months Remaining: {{ remainingTerm }} months</div>
-  <div>Monthly Payment: {{ payment|toCurrency }}</div>
+  <small>{{ remainingTerm }} months remaining</small><br>
+  <small>Monthly Payment: {{ payment|toCurrency }}</small>
 </div>
 </template>
 <script>

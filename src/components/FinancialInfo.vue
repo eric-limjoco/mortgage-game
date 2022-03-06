@@ -1,7 +1,7 @@
 <template>
 <b-container fluid class="info">
   <b-row>
-    <b-col class="h2">
+    <b-col class="h2 cash-section">
         <b-icon icon="cash"></b-icon>
         <span>{{ cash|toCurrency }}</span>
         <div class="income mt-1">
@@ -9,9 +9,17 @@
           <div class="payments-label">Total Payments: {{ cumulativePayments|toCurrency}}</div>
         </div>
     </b-col>
-    <b-col>
-      <b-icon icon="cash"></b-icon> <b-progress :value="cash" :max="originalBalance" variant="success" animated></b-progress>
-      <b-icon icon="house-door"></b-icon> <b-progress :value="balance" :max="originalBalance" variant="primary" animated></b-progress>
+    <b-col class="progress-section">
+      <b-icon icon="cash"></b-icon>
+      <small>{{ cash|toCurrency }}</small>
+      <small v-if="cash >= balance" style="float:right">
+        <b-icon icon="trophy"></b-icon>
+        <strong>Payoff Option Available</strong>
+      </small>
+      <b-progress :value="cash" :max="originalBalance" variant="success" animated></b-progress>
+      <b-icon icon="house-door"></b-icon>
+      <small>{{ balance|toCurrency }}</small>
+      <b-progress :value="balance" :max="originalBalance" variant="primary" animated></b-progress>
     </b-col>
   </b-row>
 </b-container>
@@ -50,5 +58,11 @@ export default {
 }
 .payments-label {
   font-weight: 600;
+}
+.cash-section {
+  padding-right: 0;
+}
+.progress-section {
+  padding-left: 0;
 }
 </style>

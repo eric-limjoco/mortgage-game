@@ -25,23 +25,26 @@
   <b-container fluid>
       <b-row>
         <b-col class="px-1">
+          <div class="mt-2 mb-4 d-flex justify-content-center">
+              <strong>Simulation Months</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+              <b-form-spinbutton
+                v-model="simulationMonths"
+                min="1"
+                :max="Math.min(36, remainingTerm)"
+                inline
+              />
+            </div>
           <b-button
             size="lg"
             variant="success"
-            @click="simulate(1)"
+            @click="simulate(simulationMonths)"
             :disabled="buttonsDisabled"
           >
-            <b-icon icon="skip-end"></b-icon>
-            Play 1 Month
-          </b-button>
-          <b-button
-            size="lg"
-            variant="success"
-            @click="simulate(12)"
-            :disabled="buttonsDisabled"
-          >
-            <b-icon icon="skip-end"></b-icon>
-            Play 12 Months
+            <div style="font-size:1.8rem">
+              <b-spinner small v-if="buttonsDisabled"></b-spinner>
+              <b-icon v-else icon="skip-end"></b-icon>
+              GO
+            </div>
           </b-button>
         </b-col>
         <b-col class="px-0">
@@ -84,13 +87,14 @@ import { BIcon, BModal } from 'bootstrap-vue'
 export default {
   data () {
     return {
+      simulationMonths: 12,
       modalTitle: '',
       modalMessage: '',
       buttonsDisabled: false
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore']),
+    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore', 'remainingTerm']),
     stars () {
       return parseInt(this.savingsScore / 100 * 5)
     }
@@ -156,15 +160,18 @@ export default {
 }
 </script>
 <style scoped>
-.play-bar {
-  /* border: 1px solid yellow; */
-  font-size: .8rem;
-}
 button {
   border-radius: 6px;
   font-size: .8rem;
   margin-bottom: .2rem;
   width: 100%;
-  touch-action: manipulation;
+}
+.b-form-spinbutton {
+  background-color: #198754;
+  color: #fff;
+  border: none;
+}
+.btn .btn {
+  color: #fff;
 }
 </style>

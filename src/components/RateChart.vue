@@ -30,7 +30,7 @@ export default {
           color: '#969696',
           zerolinecolor: '#969696'
         },
-        height: 240,
+        height: 200,
         margin: {
           t: 12,
           b: 48,

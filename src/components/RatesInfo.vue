@@ -4,7 +4,9 @@
   <h5><b-icon icon="shop-window"></b-icon> Rates</h5>
   <div>Market Rate</div>
   <div class="h5">
-    <b-icon icon="caret-up-fill" class="up" font-scale="0.8"></b-icon> {{ Math.round(newRate * 100) / 100}}%
+    <b-icon v-if="newRate < loanRate" icon="caret-down-fill" class="down" font-scale="0.8"></b-icon>
+    <b-icon v-else icon="caret-up-fill" class="up" font-scale="0.8"></b-icon>
+    {{ Math.round(newRate * 100) / 100}}%
   </div>
   <small>Term: {{ newTerm }} months</small><br>
   <small>Fees: ${{ newFees }}</small>
@@ -19,7 +21,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['newTerm', 'newRate', 'newFees']),
+    ...mapState(['loanRate', 'newTerm', 'newRate', 'newFees']),
     newRateIcon () {
       return 'caret-up-fill'
     }

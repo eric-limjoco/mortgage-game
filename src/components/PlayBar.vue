@@ -18,6 +18,8 @@
     ok-only
     @ok="initState"
   >
+    <b-icon v-for="index in stars" :key="index" icon="star-fill"></b-icon>
+    <b-icon v-for="index in (5-stars)" :key="index" icon="star"></b-icon>
     <p>{{ modalMessage }}</p>
   </b-modal>
   <b-container fluid>
@@ -25,7 +27,7 @@
         <b-col class="px-1">
           <b-button
             size="lg"
-            variant="secondary"
+            variant="success"
             @click="simulate(1)"
             :disabled="buttonsDisabled"
           >
@@ -34,7 +36,7 @@
           </b-button>
           <b-button
             size="lg"
-            variant="secondary"
+            variant="success"
             @click="simulate(12)"
             :disabled="buttonsDisabled"
           >
@@ -54,7 +56,7 @@
           </b-button>
           <b-button
             size="lg"
-            variant="secondary"
+            variant="primary"
             @click="startCashout"
             :disabled="buttonsDisabled"
           >
@@ -88,7 +90,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore'])
+    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore']),
+    stars () {
+      return parseInt(this.savingsScore / 100 * 5)
+    }
   },
   methods: {
     ...mapMutations(['refi', 'cashout', 'payoff', 'makePayment', 'updateRates', 'initState', 'calculateSavingsScore']),

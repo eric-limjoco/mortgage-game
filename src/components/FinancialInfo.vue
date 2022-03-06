@@ -1,7 +1,7 @@
 <template>
 <b-container fluid class="info">
   <b-row>
-    <b-col class="h4">
+    <b-col class="h1">
         <b-icon icon="cash"></b-icon>
         <span>{{ cash|toCurrency }}</span>
         <div class="income mt-1">
@@ -10,8 +10,8 @@
         </div>
     </b-col>
     <b-col>
-      <b-icon icon="cash"></b-icon> <b-progress :value="cash" :max="originalBalance" show-progress animated></b-progress>
-      <b-icon icon="house-door"></b-icon> <b-progress :value="balance" :max="originalBalance" show-progress animated></b-progress>
+      <b-icon icon="cash"></b-icon> <b-progress :value="cash" :max="originalBalance" variant="success" animated></b-progress>
+      <b-icon icon="house-door"></b-icon> <b-progress :value="balance" :max="originalBalance" variant="primary" animated></b-progress>
     </b-col>
   </b-row>
 </b-container>
@@ -42,7 +42,7 @@ export default {
   padding: 0;
 }
 .income {
-  font-size: .6rem;
+  font-size: .7rem;
 }
 .payments {
   display: block;

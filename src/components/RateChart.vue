@@ -61,7 +61,7 @@ export default {
         mode: 'lines',
         name: 'Market Rate',
         line: {
-          color: '#415952',
+          color: '#198754',
           width: 1
         }
       }
@@ -71,7 +71,7 @@ export default {
         mode: 'lines',
         name: 'Your Loan Rate',
         line: {
-          color: 'rgb(128, 0, 128)',
+          color: '#0d6efd',
           width: 2
         }
       }

@@ -2,7 +2,7 @@
 <div class="game">
   <b-container fluid>
     <b-row class="mb-3">
-      <b-col><financial-info /></b-col>
+      <b-col id="financial-info"><financial-info /></b-col>
     </b-row>
     <b-row class="mb-4">
       <b-col><loan-info /></b-col>

@@ -27,6 +27,7 @@
             size="lg"
             variant="secondary"
             @click="simulate(1)"
+            :disabled="buttonsDisabled"
           >
             <b-icon icon="skip-end"></b-icon>
             Play 1 Month
@@ -35,6 +36,7 @@
             size="lg"
             variant="secondary"
             @click="simulate(12)"
+            :disabled="buttonsDisabled"
           >
             <b-icon icon="skip-end"></b-icon>
             Play 12 Months
@@ -45,6 +47,7 @@
             size="lg"
             variant="success"
             @click="startRefi"
+            :disabled="buttonsDisabled"
           >
             <b-icon icon="arrow-repeat"></b-icon>
             Refinance
@@ -53,6 +56,7 @@
             size="lg"
             variant="secondary"
             @click="startCashout"
+            :disabled="buttonsDisabled"
           >
             <b-icon icon="cash-stack"></b-icon>
             Cashout
@@ -61,6 +65,7 @@
             size="lg"
             variant="danger"
             @click="startPayoff"
+            :disabled="buttonsDisabled"
           >
             <b-icon icon="house-door"></b-icon>
             Payoff
@@ -78,7 +83,8 @@ export default {
   data () {
     return {
       modalTitle: '',
-      modalMessage: ''
+      modalMessage: '',
+      buttonsDisabled: false
     }
   },
   computed: {
@@ -92,11 +98,13 @@ export default {
       })
     },
     async simulate (n) {
+      this.buttonsDisabled = true
       for (let i = 0; i < n; i++) {
         this.makePayment()
         this.updateRates()
-        await this.sleep(1)
+        await this.sleep(50)
       }
+      this.buttonsDisabled = false
     },
     startRefi () {
       if (this.cash < this.newFees) {

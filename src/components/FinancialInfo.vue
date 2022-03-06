@@ -5,13 +5,13 @@
         <b-icon icon="cash"></b-icon>
         <span>{{ cash|toCurrency }}</span>
         <div class="income mt-1">
-          <b-icon icon="plus-circle"></b-icon> {{ income|toCurrency }}/month
+          <div><b-icon icon="plus-circle"></b-icon> {{ income|toCurrency }}/month</div>
+          <div class="payments-label">Total Payments: {{ cumulativePayments|toCurrency}}</div>
         </div>
     </b-col>
     <b-col>
-      <div class="payments">
-        <span class="payments-label">Total Payments</span>: {{ cumulativePayments|toCurrency}}
-      </div>
+      <b-icon icon="cash"></b-icon> <b-progress :value="cash" :max="originalBalance" show-progress animated></b-progress>
+      <b-icon icon="house-door"></b-icon> <b-progress :value="balance" :max="originalBalance" show-progress animated></b-progress>
     </b-col>
   </b-row>
 </b-container>
@@ -23,10 +23,12 @@ import { BIcon } from 'bootstrap-vue'
 export default {
   data () {
     return {
+      value: 200000,
+      max: 400000
     }
   },
   computed: {
-    ...mapState(['cash', 'income', 'cumulativePayments'])
+    ...mapState(['cash', 'balance', 'income', 'cumulativePayments', 'originalBalance'])
   },
   components: {
     BIcon
@@ -47,7 +49,6 @@ export default {
   float: right;
 }
 .payments-label {
-  font-size: .8rem;
   font-weight: 600;
 }
 </style>

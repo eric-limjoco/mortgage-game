@@ -160,5 +160,6 @@ button {
   font-size: .8rem;
   margin-bottom: .2rem;
   width: 100%;
+  touch-action: manipulation;
 }
 </style>

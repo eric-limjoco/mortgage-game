@@ -12,10 +12,6 @@
     <b-col class="progress-section">
       <b-icon icon="cash"></b-icon>
       <small>{{ cash|toCurrency }}</small>
-      <small v-if="cash >= balance" style="float:right">
-        <b-icon icon="trophy"></b-icon>
-        <strong>Payoff Option Available</strong>
-      </small>
       <b-progress :value="cash" :max="originalBalance" variant="success" animated></b-progress>
       <b-icon icon="house-door"></b-icon>
       <small>{{ balance|toCurrency }}</small>

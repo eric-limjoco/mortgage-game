@@ -25,25 +25,26 @@
   <b-container fluid>
       <b-row>
         <b-col class="px-1">
-          <div class="mt-2 mb-4 d-flex justify-content-center">
-              <strong>Simulation Months</strong>&nbsp;&nbsp;&nbsp;&nbsp;
-              <b-form-spinbutton
-                v-model="simulationMonths"
-                min="1"
-                :max="Math.min(36, remainingTerm)"
-                inline
-              />
+          <div class="mb-3">
+              <div>
+                <b-form-spinbutton
+                  v-model="simulationMonths"
+                  min="1"
+                  :max="Math.min(36, remainingTerm)"
+                >
+                </b-form-spinbutton>
+              </div>
             </div>
           <b-button
-            size="lg"
+            size="md"
             variant="success"
             @click="simulate(simulationMonths)"
             :disabled="buttonsDisabled"
           >
-            <div style="font-size:1.8rem">
+            <div style="font-size:1.6rem">
               <b-spinner small v-if="buttonsDisabled"></b-spinner>
               <b-icon v-else icon="skip-end"></b-icon>
-              GO
+              Simulate {{ simulationMonths }} Months
             </div>
           </b-button>
         </b-col>

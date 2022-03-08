@@ -3,7 +3,6 @@
 <b-navbar
   fixed="top"
   type="dark"
-  variant="success"
   class="nav-bar"
   >
   <b-navbar-brand>Mortgage Game</b-navbar-brand>
@@ -35,6 +34,7 @@ export default {
 </script>
 <style scoped>
 .nav-bar {
+  background-color: #21732f;
   padding: .4rem 1rem;
   justify-content: space-between;
 }

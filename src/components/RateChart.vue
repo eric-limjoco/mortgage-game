@@ -43,6 +43,7 @@ export default {
           y: 1,
           xanchor: 'right',
           font: {
+            family: 'Lato',
             color: '#969696'
           }
         }

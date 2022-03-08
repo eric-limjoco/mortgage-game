@@ -41,4 +41,7 @@ export default {
 a {
   color: #fff;
 }
+.navbar-brand {
+  font-family: 'Montserrat';
+}
 </style>

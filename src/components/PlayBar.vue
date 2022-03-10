@@ -22,7 +22,7 @@
     <b-icon v-for="index in (5-stars)" :key="index" icon="star"></b-icon>
     <p>{{ modalMessage }}</p>
   </b-modal>
-  <b-container fluid>
+  <b-container fluid class="px-0">
       <b-row class="mb-2">
         <b-button-group class="px-0">
           <b-form-spinbutton
@@ -33,6 +33,7 @@
             min="1"
             :max="Math.min(36, remainingTerm)"
             size="sm"
+            style="font-size:.8rem"
           >
           </b-form-spinbutton>
           <b-button
@@ -147,7 +148,7 @@ export default {
       }
     },
     simulationMonthsFormatter () {
-      return this.simulationMonths > 1 ? `Simulate ${this.simulationMonths} Months` : `Simulate ${this.simulationMonths} Month`
+      return this.simulationMonths > 1 ? `Run ${this.simulationMonths} Months` : `Run ${this.simulationMonths} Month`
     }
   },
   watch: {
@@ -173,11 +174,13 @@ button {
   margin-bottom: .2rem;
   width: 100%;
 }
-.b-form-spinbutton {
+.b-form-spinbutton,
+.b-form-spinbutton.focus {
   background-color: #21732f;
   border-radius: 6px 0 0 6px;
   color: #fff;
   border: none;
+  border-right: 2px solid #2c3e50;
 }
 .b-form-spinbutton.disabled {
   opacity: 0.65;

@@ -23,32 +23,35 @@
     <p>{{ modalMessage }}</p>
   </b-modal>
   <b-container fluid>
-      <b-row>
-        <b-col class="px-1">
-          <div class="mb-3">
-              <div>
-                <b-form-spinbutton
-                  v-model="simulationMonths"
-                  min="1"
-                  :max="Math.min(36, remainingTerm)"
-                >
-                </b-form-spinbutton>
-              </div>
-            </div>
+      <b-row class="mb-2">
+        <b-button-group class="px-0">
+          <b-form-spinbutton
+            id="simulation-months-input"
+            v-model="simulationMonths"
+            :formatter-fn="simulationMonthsFormatter"
+            :disabled="buttonsDisabled"
+            min="1"
+            :max="Math.min(36, remainingTerm)"
+            size="sm"
+          >
+          </b-form-spinbutton>
           <b-button
-            size="md"
+            class="my-0"
+            size="lg"
             variant="success"
             @click="simulate(simulationMonths)"
             :disabled="buttonsDisabled"
           >
-            <div style="font-size:1.6rem">
+            <div style="font-size:1rem">
               <b-spinner small v-if="buttonsDisabled"></b-spinner>
               <b-icon v-else icon="skip-end"></b-icon>
-              Simulate {{ simulationMonths }} Months
+              Go
             </div>
           </b-button>
-        </b-col>
-        <b-col class="px-0">
+        </b-button-group>
+      </b-row>
+      <b-row>
+        <b-button-group class="px-0">
           <b-button
             size="lg"
             variant="success"
@@ -76,7 +79,7 @@
             <b-icon icon="house-door"></b-icon>
             Payoff
           </b-button>
-        </b-col>
+        </b-button-group>
       </b-row>
   </b-container>
 </div>
@@ -142,6 +145,9 @@ export default {
       } else {
         this.payoff()
       }
+    },
+    simulationMonthsFormatter () {
+      return this.simulationMonths > 1 ? `Simulate ${this.simulationMonths} Months` : `Simulate ${this.simulationMonths} Month`
     }
   },
   watch: {
@@ -168,9 +174,13 @@ button {
   width: 100%;
 }
 .b-form-spinbutton {
-  background-color: #198754;
+  background-color: #21732f;
+  border-radius: 6px 0 0 6px;
   color: #fff;
   border: none;
+}
+.b-form-spinbutton.disabled {
+  opacity: 0.65;
 }
 .btn .btn {
   color: #fff;

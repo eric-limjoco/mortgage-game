@@ -1,6 +1,9 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <template>
 <div class="play-bar">
+  <refi-dialog
+    ref="refi-dialog"
+  />
   <b-modal
     id="modal-play"
     ref="modal-play"
@@ -88,6 +91,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { BIcon, BModal } from 'bootstrap-vue'
+import RefiDialog from './RefiDialog.vue'
 
 export default {
   data () {
@@ -121,13 +125,7 @@ export default {
       this.buttonsDisabled = false
     },
     startRefi () {
-      if (this.cash < this.newFees) {
-        this.modalTitle = 'Cannot Refinance Mortgage'
-        this.modalMessage = "You don't have enough cash to refinance your mortgage"
-        this.$refs['modal-play'].show()
-      } else {
-        this.refi()
-      }
+      this.$refs['refi-dialog'].showDialog()
     },
     startCashout () {
       if (this.cash < this.newFees) {
@@ -163,7 +161,8 @@ export default {
   },
   components: {
     BIcon,
-    BModal
+    BModal,
+    RefiDialog
   }
 }
 </script>
@@ -184,17 +183,5 @@ button {
 }
 .b-form-spinbutton.disabled {
   opacity: 0.65;
-}
-.btn .btn {
-  color: #fff;
-}
-.btn-success {
-  background-color: #21732f;
-}
-.btn-primary {
-  background-color: #276681;
-}
-.btn-danger {
-  background-color: #dc3545;
 }
 </style>

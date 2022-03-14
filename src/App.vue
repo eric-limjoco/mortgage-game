@@ -27,4 +27,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+.btn .btn {
+  color: #fff;
+}
+.btn-success {
+  background-color: #21732f;
+}
+.btn-primary {
+  background-color: #276681;
+}
+.btn-danger {
+  background-color: #dc3545;
+}
 </style>

@@ -7,15 +7,9 @@
   <cashout-dialog
     ref="cashout-dialog"
   />
-  <b-modal
-    id="modal-play"
-    ref="modal-play"
-    :title="modalTitle"
-    hide-header-close
-    ok-only
-  >
-    <p>{{ modalMessage }}</p>
-  </b-modal>
+  <payoff-dialog
+    ref="payoff-dialog"
+  />
   <b-modal
     id="modal-play-gameover"
     ref="modal-play-gameover"
@@ -96,6 +90,7 @@ import { mapState, mapMutations } from 'vuex'
 import { BIcon, BModal } from 'bootstrap-vue'
 import RefiDialog from './RefiDialog.vue'
 import CashoutDialog from './CashoutDialog.vue'
+import PayoffDialog from './PayoffDialog.vue'
 
 export default {
   data () {
@@ -135,13 +130,7 @@ export default {
       this.$refs['cashout-dialog'].showDialog()
     },
     startPayoff () {
-      if (this.cash < this.balance) {
-        this.modalTitle = 'Cannot Payoff Mortgage'
-        this.modalMessage = "You don't have enough cash to payoff your mortgage"
-        this.$refs['modal-play'].show()
-      } else {
-        this.payoff()
-      }
+      this.$refs['payoff-dialog'].showDialog()
     },
     simulationMonthsFormatter () {
       return this.simulationMonths > 1 ? `Run ${this.simulationMonths} Months` : `Run ${this.simulationMonths} Month`
@@ -161,7 +150,8 @@ export default {
     BIcon,
     BModal,
     RefiDialog,
-    CashoutDialog
+    CashoutDialog,
+    PayoffDialog
   }
 }
 </script>

@@ -206,13 +206,12 @@ export default {
 }
 </script>
 <style scoped>
-.label {
-  color: #999999;
-  font-size: 0.6rem;
-  font-weight: 600;
-}
+.label,
 .confirm-label {
   font-size: 0.8rem;
   font-weight: 600;
+}
+.label {
+  color: #999999;
 }
 </style>

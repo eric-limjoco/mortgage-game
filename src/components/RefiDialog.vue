@@ -4,7 +4,7 @@
     v-model="show"
     :title="title"
     :hide-footer="canRefi"
-    ok-variant="success"
+    ok-variant="primary"
     ok-only
     hide-header-close
   >
@@ -56,7 +56,7 @@
       <b-row>
         <b-button
           @click="startRefi"
-          variant="success"
+          variant="primary"
           class= "mb-1"
         >
           <b-icon icon="arrow-repeat"></b-icon>
@@ -65,6 +65,7 @@
         <b-button
           @click="hideDialog"
           size="sm"
+          variant="dark"
         >
           Cancel
         </b-button>
@@ -92,7 +93,7 @@
   <b-modal
     v-model="showConfirmation"
     :title="confirmationTitle"
-    ok-variant="success"
+    ok-variant="primary"
     ok-only
     hide-header-close
   >

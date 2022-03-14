@@ -42,7 +42,7 @@
           <b-button
             class="my-0"
             size="lg"
-            variant="success"
+            variant="primary"
             @click="simulate(simulationMonths)"
             :disabled="buttonsDisabled"
           >
@@ -58,7 +58,7 @@
         <b-button-group class="px-0">
           <b-button
             size="lg"
-            variant="success"
+            variant="primary"
             @click="startRefi"
             :disabled="buttonsDisabled"
           >
@@ -67,7 +67,7 @@
           </b-button>
           <b-button
             size="lg"
-            variant="primary"
+            variant="secondary"
             @click="startCashout"
             :disabled="buttonsDisabled"
           >

@@ -1,12 +1,98 @@
-.btn .btn {
-  color: #fff;
+.btn-primary,
+.btn-primary:focus {
+  color: #fffffd;
+  background-color: #21732f; /* 276681 */
+  border-color: #21732f;
 }
-.btn-success {
+
+.btn-primary:hover {
+  color: #fffffd;
+  background-color: #1d692a; /* 235e77 */
+  border-color: #1d692a;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fffffd;
+  background-color: #21732f; /* 296c89 */
+  border-color: #21732f;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
   background-color: #21732f;
+  border-color: #21732f;
 }
-.btn-primary {
+
+.btn-secondary,
+.btn-secondary:focus {
+  color: #fffffd;
   background-color: #276681;
+  border-color: #276681;
 }
-.btn-danger {
+
+.btn-secondary:hover {
+  color: #fffffd;
+  background-color: #235e77;
+  border-color: #235e77;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #fffffd;
+  background-color: #215870;
+  border-color: #215870;
+}
+
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+  background-color: #4d6b77;
+  border-color: #4d6b77;
+}
+
+.btn-danger,
+.btn-danger:focus {
+  color: #fffffd;
   background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  color: #fffffd;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger.disabled,
+.btn-danger:disabled {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-dark {
+  color: #fffffd;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-dark:hover {
+  color: #fffffd;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+.btn-dark:not(:disabled):not(.disabled):active,
+.btn-dark:not(:disabled):not(.disabled).active,
+.show > .btn-dark.dropdown-toggle {
+  color: #fffffd;
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+.btn-dark.disabled,
+.btn-dark:disabled {
+  background-color: #a2a8ad;
+  border-color: #a2a8ad;
 }

@@ -3,49 +3,62 @@
     <b-modal
     v-model="show"
     :title="title"
-    :hide-footer="canRefi"
+    :hide-footer="canCashout"
     ok-variant="primary"
     ok-only
     hide-header-close
   >
     <b-container fluid
-      v-if="canRefi"
+      v-if="canCashout"
     >
       <b-row class="h4">
-        <b-col cols="4">
+        <b-col cols="5">
           <div class="label">Current Rate</div>
           {{ Math.round(loanRate * 100) / 100}}%
         </b-col>
         <b-col align="center" class="h1" cols="2">
           <b-icon icon="arrow-right"></b-icon>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="5">
           <div class="label">New Rate</div>
           {{ Math.round(newRate * 100) / 100}}%
         </b-col>
       </b-row>
       <b-row class="h4">
-        <b-col cols="4">
+        <b-col cols="5">
+          <div class="label">Current Balance</div>
+          {{ balance | toCurrency }}
+        </b-col>
+        <b-col align="center" class="h1" cols="2">
+          <b-icon icon="arrow-right"></b-icon>
+        </b-col>
+        <b-col cols="5">
+          <div class="label">New Balance</div>
+          {{ originalBalance | toCurrency }}
+        </b-col>
+      </b-row>
+      <b-row class="h4">
+        <b-col cols="5">
           <div class="label">Monthly Payment</div>
           {{ payment|toCurrency }}
         </b-col>
         <b-col align="center" class="h1" cols="2">
           <b-icon icon="arrow-right"></b-icon>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="5">
           <div class="label">New Monthly Payment</div>
           {{ newPayment|toCurrency }}
         </b-col>
       </b-row>
       <b-row style="font-size:1rem">
-        <b-col cols="4">
+        <b-col cols="5">
           <div class="label">Remaining Term</div>
           {{ remainingTerm }} months
         </b-col>
         <b-col align="center" class="h1" cols="2">
           <b-icon icon="arrow-right"></b-icon>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="5">
           <div class="label">New Term</div>
           {{ newTerm }} months
         </b-col>
@@ -55,19 +68,24 @@
           Current Cash: {{ cash | toCurrency }}
         </b-col>
       </b-row>
+      <b-row>
+        <b-col>
+          Cashout Amount: {{ cashoutAmount | toCurrency }}
+        </b-col>
+      </b-row>
       <b-row class="mb-4">
         <b-col>
-          <strong>Refinancing Fees: {{ newFees | toCurrency }}</strong>
+          <strong>Cashout Refinancing Fees: {{ newFees | toCurrency }}</strong>
         </b-col>
       </b-row>
       <b-row>
         <b-button
-          @click="startRefi"
-          variant="primary"
+          @click="startCashout"
+          variant="secondary"
           class= "mb-1"
         >
-          <b-icon icon="arrow-repeat"></b-icon>&nbsp;
-          Refinance My Mortgage
+          <b-icon icon="cash-stack"></b-icon>&nbsp;
+          Cashout Refinance My Mortgage
         </b-button>
         <b-button
           @click="hideDialog"
@@ -92,7 +110,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <strong>Refinancing Fees: {{ newFees | toCurrency }}</strong>
+          <strong>Cashout Refinancing Fees: {{ newFees | toCurrency }}</strong>
         </b-col>
       </b-row>
     </b-container>
@@ -100,14 +118,20 @@
   <b-modal
     v-model="showConfirmation"
     :title="confirmationTitle"
-    ok-variant="primary"
+    ok-variant="secondary"
     ok-only
     hide-header-close
   >
     <b-container>
       <b-row class="mb-3">
         <b-col>
-          You have successfully refinanced your mortgage.
+          You have successfully cashout refinanced your mortgage.
+        </b-col>
+      </b-row>
+      <b-row class="mb-2">
+        <b-col>
+          <div class="confirm-label">Cash</div>
+          {{ cash | toCurrency}}
         </b-col>
       </b-row>
       <b-row class="mb-2">
@@ -147,28 +171,31 @@ export default {
     return {
       show: false,
       showConfirmation: false,
-      errorMessage: "You don't have enough cash to refinance your mortgage.",
-      confirmationTitle: 'Mortgage Refinance Complete'
+      errorMessage: "You don't have enough cash to cashout refinance your mortgage.",
+      confirmationTitle: ' Cashout Refinance Complete'
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'loanRate', 'newRate', 'payment', 'remainingTerm', 'newTerm', 'balance']),
-    canRefi () {
+    ...mapState(['cash', 'newFees', 'loanRate', 'newRate', 'originalBalance', 'payment', 'remainingTerm', 'newTerm', 'balance']),
+    canCashout () {
       return this.cash >= this.newFees
     },
     title () {
-      return this.canRefi ? 'Refinance' : 'Cannot Refinance Mortgage'
+      return this.canCashout ? 'Cashout Refinance' : 'Cannot Cashout Mortgage'
     },
     newPayment () {
       return (this.balance * (this.newRate / 1200)) / (1 - (Math.pow((1 + (this.newRate / 1200)), this.newTerm * -1)))
+    },
+    cashoutAmount () {
+      return this.originalBalance - this.balance
     }
   },
   methods: {
-    ...mapMutations(['refi']),
+    ...mapMutations(['cashout']),
     showDialog () { this.show = true },
     hideDialog () { this.show = false },
-    startRefi () {
-      this.refi()
+    startCashout () {
+      this.cashout()
       this.hideDialog()
       this.showConfirmation = true
     }

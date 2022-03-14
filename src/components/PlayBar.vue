@@ -4,6 +4,9 @@
   <refi-dialog
     ref="refi-dialog"
   />
+  <cashout-dialog
+    ref="cashout-dialog"
+  />
   <b-modal
     id="modal-play"
     ref="modal-play"
@@ -92,6 +95,7 @@
 import { mapState, mapMutations } from 'vuex'
 import { BIcon, BModal } from 'bootstrap-vue'
 import RefiDialog from './RefiDialog.vue'
+import CashoutDialog from './CashoutDialog.vue'
 
 export default {
   data () {
@@ -128,13 +132,7 @@ export default {
       this.$refs['refi-dialog'].showDialog()
     },
     startCashout () {
-      if (this.cash < this.newFees) {
-        this.modalTitle = 'Cannot Cashout Mortgage'
-        this.modalMessage = "You don't have enough cash to cashout your mortgage"
-        this.$refs['modal-play'].show()
-      } else {
-        this.cashout()
-      }
+      this.$refs['cashout-dialog'].showDialog()
     },
     startPayoff () {
       if (this.cash < this.balance) {
@@ -162,7 +160,8 @@ export default {
   components: {
     BIcon,
     BModal,
-    RefiDialog
+    RefiDialog,
+    CashoutDialog
   }
 }
 </script>

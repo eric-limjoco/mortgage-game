@@ -88,7 +88,7 @@ export default {
           width: 2
         }
       }
-      if (this.drawOptimal) {
+      if (this.showOptimal) {
         return [rates1, rates2, rates3]
       } else {
         return [rates1, rates2]

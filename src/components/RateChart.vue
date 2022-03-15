@@ -46,7 +46,9 @@ export default {
             family: 'Lato',
             color: '#969696'
           }
-        }
+        },
+        plot_bgcolor: 'hsla(0, 0%, 96.1%, 0.71)',
+        paper_bgcolor: 'hsla(0, 0%, 96.1%, 0.71)'
       }
     }
   },
@@ -100,7 +102,6 @@ export default {
 </script>
 <style scoped>
 .chart {
-  /* border: 1px solid orange; */
   padding: 0;
 }
 </style>

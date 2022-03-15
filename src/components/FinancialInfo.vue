@@ -12,10 +12,10 @@
     <b-col class="progress-section">
       <b-icon icon="cash"></b-icon>
       <small>{{ cash|toCurrency }}</small>
-      <b-progress :value="cash" :max="originalBalance" variant="success" animated></b-progress>
+      <b-progress :value="cash" :max="originalBalance" variant="primary" animated></b-progress>
       <b-icon icon="house-door"></b-icon>
       <small>{{ balance|toCurrency }}</small>
-      <b-progress :value="balance" :max="originalBalance" variant="primary" animated></b-progress>
+      <b-progress :value="balance" :max="originalBalance" variant="secondary" animated></b-progress>
     </b-col>
   </b-row>
 </b-container>

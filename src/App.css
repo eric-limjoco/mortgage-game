@@ -1,3 +1,6 @@
+body {
+  background-color: hsla(0, 0%, 96.1%, 0.71);
+}
 .btn-primary,
 .btn-primary:focus {
   color: #fffffd;
@@ -95,4 +98,12 @@
 .btn-dark:disabled {
   background-color: #a2a8ad;
   border-color: #a2a8ad;
+}
+
+.bg-primary {
+  background-color: #21732f !important;
+}
+
+.bg-secondary {
+  background-color: #276681 !important;
 }

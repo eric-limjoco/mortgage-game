@@ -10,18 +10,6 @@
   <payoff-dialog
     ref="payoff-dialog"
   />
-  <b-modal
-    id="modal-play-gameover"
-    ref="modal-play-gameover"
-    :title="modalTitle"
-    hide-header-close
-    ok-only
-    @ok="initState"
-  >
-    <b-icon v-for="index in stars" :key="index" icon="star-fill"></b-icon>
-    <b-icon v-for="index in (5-stars)" :key="index" icon="star"></b-icon>
-    <p>{{ modalMessage }}</p>
-  </b-modal>
   <b-container fluid class="px-0">
       <b-row class="mb-2">
         <b-button-group class="px-0">
@@ -102,13 +90,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'balance', 'gameOver', 'savingsScore', 'remainingTerm']),
-    stars () {
-      return parseInt(this.savingsScore / 100 * 5)
-    }
+    ...mapState(['cash', 'newFees', 'balance', 'savingsScore', 'remainingTerm'])
   },
   methods: {
-    ...mapMutations(['refi', 'cashout', 'payoff', 'makePayment', 'updateRates', 'initState', 'calculateSavingsScore']),
+    ...mapMutations(['refi', 'cashout', 'payoff', 'makePayment', 'updateRates', 'initState']),
     sleep (duration) {
       return new Promise(resolve => {
         setTimeout(() => { resolve() }, duration)
@@ -134,16 +119,6 @@ export default {
     },
     simulationMonthsFormatter () {
       return this.simulationMonths > 1 ? `Run ${this.simulationMonths} Months` : `Run ${this.simulationMonths} Month`
-    }
-  },
-  watch: {
-    gameOver () {
-      if (this.gameOver) {
-        this.calculateSavingsScore()
-        this.modalTitle = 'Game Over'
-        this.modalMessage = `Savings Score: ${this.savingsScore}%`
-        this.$refs['modal-play-gameover'].show()
-      }
     }
   },
   components: {

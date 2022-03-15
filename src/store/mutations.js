@@ -80,7 +80,7 @@ export default {
       let principal = principalPayment(state.balance, state.remainingTerm, state.loanRate)
       state.balance -= principal
       state.remainingTerm -= 1
-      if (state.remainingTerm <= 0) state.gameOver = true
+      if (state.remainingTerm <= 0 || state.balance <= 0) state.gameOver = true
     }
   },
   refi (state) {

@@ -1,5 +1,8 @@
 <template>
 <div class="game">
+  <game-over-dialog
+    ref="game-over-dialog"
+  />
   <b-container fluid>
     <b-row class="mb-3">
       <b-col id="financial-info"><financial-info /></b-col>
@@ -24,6 +27,7 @@ import RateChart from './RateChart.vue'
 import FinancialInfo from './FinancialInfo.vue'
 import LoanInfo from './LoanInfo.vue'
 import RatesInfo from './RatesInfo.vue'
+import GameOverDialog from './GameOverDialog.vue'
 
 export default {
   data () {
@@ -31,20 +35,29 @@ export default {
     }
   },
   computed: {
-    ...mapState(['message'])
+    ...mapState(['message', 'gameOver', 'savingsScore'])
   },
   mounted () {
     this.initState()
   },
   methods: {
-    ...mapMutations(['initState'])
+    ...mapMutations(['initState', 'calculateSavingsScore'])
+  },
+  watch: {
+    gameOver () {
+      if (this.gameOver) {
+        this.calculateSavingsScore()
+        this.$refs['game-over-dialog'].showDialog()
+      }
+    }
   },
   components: {
     PlayBar,
     RateChart,
     FinancialInfo,
     LoanInfo,
-    RatesInfo
+    RatesInfo,
+    GameOverDialog
   }
 }
 </script>

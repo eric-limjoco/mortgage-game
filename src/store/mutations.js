@@ -52,6 +52,7 @@ export default {
     state.rateHistory.push(state.loanRate)
     state.userRateHistory.push(state.loanRate)
     state.optimalRateHistory.push(state.loanRate)
+    state.showOptimal = false
   },
   setTheme (state, theme) {
     state.theme = theme

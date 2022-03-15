@@ -131,19 +131,19 @@
       <b-row class="mb-2">
         <b-col>
           <div class="confirm-label">Cash</div>
-          {{ cash | toCurrency}}
+          {{ cash|toCurrency}}
         </b-col>
       </b-row>
       <b-row class="mb-2">
         <b-col>
           <div class="confirm-label">Interest Rate</div>
-          {{ Math.round(loanRate * 100) / 100}}%
+          {{ loanRate|toRate }}
         </b-col>
       </b-row>
       <b-row class="mb-2">
         <b-col>
           <div class="confirm-label">Outstanding Balance</div>
-          {{ balance | toCurrency }}
+          {{ balance|toCurrency }}
         </b-col>
       </b-row>
       <b-row class="mb-2">
@@ -155,7 +155,7 @@
       <b-row>
         <b-col>
           <div class="confirm-label">Monthly Payment</div>
-          {{ payment | toCurrency }}
+          {{ payment|toCurrency }}
         </b-col>
       </b-row>
     </b-container>

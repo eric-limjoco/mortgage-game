@@ -3,7 +3,7 @@
   <h5><b-icon icon="house-door"></b-icon> {{ balance|toCurrency }}</h5>
   <div>Your Interest Rate</div>
   <div class="h5">
-    {{ Math.round(loanRate * 100) / 100}}%
+    {{ loanRate|toRate }}
   </div>
   <small>{{ remainingTerm }} months remaining</small><br>
   <small>Monthly Payment: {{ payment|toCurrency }}</small>

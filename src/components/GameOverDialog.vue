@@ -4,16 +4,65 @@
     :title="title"
     hide-header-close
     ok-only
+    ok-title="Play Again"
     @ok="initState"
   >
-    <p>You have successfully paid off your mortgage!</p>
-    <span
-      v-for="index in 5"
-      :key="index">
-      <b-icon v-if="index <= stars" icon="star-fill"></b-icon>
-      <b-icon v-else icon="star"></b-icon>
-    </span>
-    <p>Savings Score: {{savingsScore}}%</p>
+    <p class="mb-1">You have successfully paid off your mortgage!</p>
+
+    <b-container fluid>
+      <b-row class="h2 mb-4">
+        <b-col>
+          <span
+            v-for="index in 5"
+            :key="index">
+            <b-icon v-if="index <= stars" icon="star-fill"></b-icon>
+            <b-icon v-else icon="star"></b-icon>
+          </span>
+        </b-col>
+      </b-row>
+      <b-row class="h4 mb-3">
+        <b-col>
+          <div class="label">Savings Score</div>
+          {{ savingsScore }}%
+        </b-col>
+      </b-row>
+      <b-row class="h4 mb-3">
+        <b-col cols="5">
+          <div class="label">Your Rate</div>
+          {{ loanRate|toRate }}
+        </b-col>
+        <b-col>
+          <div class="label">Lowest Rate</div>
+          {{ minRate|toRate }}
+        </b-col>
+      </b-row>
+      <b-row class="h4 mb-3">
+        <b-col>
+          <div class="label">Scheduled Payments</div>
+          {{ totalPaymentsNaive|toCurrency }}
+        </b-col>
+      </b-row>
+      <b-row class="h4 mb-3">
+        <b-col cols="5">
+          <div class="label">Your Payments</div>
+          {{ cumulativePayments|toCurrency }}
+        </b-col>
+        <b-col>
+          <div class="label">Minimum Payments</div>
+          {{ lowestPayments|toCurrency }}
+        </b-col>
+      </b-row>
+      <b-row class="h4">
+        <b-col cols="5">
+          <div class="label">Your Savings</div>
+          {{ savings|toCurrency }}
+        </b-col>
+        <b-col>
+          <div class="label">Possible Savings</div>
+          {{ maxSavings|toCurrency }}
+        </b-col>
+      </b-row>
+    </b-container>
   </b-modal>
 </template>
 
@@ -28,7 +77,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['savingsScore']),
+    ...mapState(['savingsScore', 'loanRate', 'minRate', 'lowestPayments', 'totalPaymentsNaive', 'cumulativePayments', 'maxSavings', 'savings']),
     stars () {
       return parseInt(this.savingsScore / 100 * 5)
     }

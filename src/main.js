@@ -19,6 +19,11 @@ Vue.filter('toCurrency', function (value) {
   return formatter.format(value)
 })
 
+Vue.filter('toRate', function (value) {
+  if (typeof value !== 'number') return value
+  return `${Math.round(value * 100) / 100}%`
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

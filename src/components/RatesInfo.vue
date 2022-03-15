@@ -6,7 +6,7 @@
   <div class="h5">
     <b-icon v-if="newRate < loanRate" icon="caret-down-fill" class="down" font-scale="0.8"></b-icon>
     <b-icon v-else icon="caret-up-fill" class="up" font-scale="0.8"></b-icon>
-    {{ Math.round(newRate * 100) / 100}}%
+    {{ newRate|toRate }}
   </div>
   <small>Term: {{ newTerm }} months</small><br>
   <small>Fees: ${{ newFees }}</small>

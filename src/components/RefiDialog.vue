@@ -14,14 +14,14 @@
       <b-row class="h4">
         <b-col cols="4">
           <div class="label">Current Rate</div>
-          {{ Math.round(loanRate * 100) / 100}}%
+          {{ loanRate|toRate }}
         </b-col>
         <b-col align="center" class="h1" cols="2">
           <b-icon icon="arrow-right"></b-icon>
         </b-col>
         <b-col cols="6">
           <div class="label">New Rate</div>
-          {{ Math.round(newRate * 100) / 100}}%
+          {{ newRate|toRate }}
         </b-col>
       </b-row>
       <b-row class="h4">
@@ -52,12 +52,12 @@
       </b-row>
       <b-row class="mt-2">
         <b-col>
-          Current Cash: {{ cash | toCurrency }}
+          Current Cash: {{ cash|toCurrency }}
         </b-col>
       </b-row>
       <b-row class="mb-4">
         <b-col>
-          <strong>Refinancing Fees: {{ newFees | toCurrency }}</strong>
+          <strong>Refinancing Fees: {{ newFees|toCurrency }}</strong>
         </b-col>
       </b-row>
       <b-row>
@@ -92,7 +92,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <strong>Refinancing Fees: {{ newFees | toCurrency }}</strong>
+          <strong>Refinancing Fees: {{ newFees|toCurrency }}</strong>
         </b-col>
       </b-row>
     </b-container>
@@ -113,13 +113,13 @@
       <b-row class="mb-2">
         <b-col>
           <div class="confirm-label">Interest Rate</div>
-          {{ Math.round(loanRate * 100) / 100}}%
+          {{ loanRate|toRate }}
         </b-col>
       </b-row>
       <b-row class="mb-2">
         <b-col>
           <div class="confirm-label">Outstanding Balance</div>
-          {{ balance | toCurrency }}
+          {{ balance|toCurrency }}
         </b-col>
       </b-row>
       <b-row class="mb-2">
@@ -131,7 +131,7 @@
       <b-row>
         <b-col>
           <div class="confirm-label">Monthly Payment</div>
-          {{ payment | toCurrency }}
+          {{ payment|toCurrency }}
         </b-col>
       </b-row>
     </b-container>

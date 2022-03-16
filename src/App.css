@@ -1,6 +1,7 @@
 body {
   background-color: hsla(0, 0%, 96.1%, 0.71);
 }
+
 .btn-primary,
 .btn-primary:focus {
   color: #fffffd;
@@ -26,6 +27,34 @@ body {
 .btn-primary:disabled {
   background-color: #21732f;
   border-color: #21732f;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:focus {
+  color: #21732f;
+  background-color: #fffffd;
+  border-color: #21732f;
+}
+
+.btn-outline-primary:hover {
+  color: #fffffd;
+  background-color: #1d692a; /* 235e77 */
+  border-color: #1d692a;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fffffd;
+  background-color: #21732f; /* 296c89 */
+  border-color: #21732f;
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #1d692a;
+  background-color: #fffffd;
+  border-color: #1d692a;
 }
 
 .btn-secondary,
@@ -55,6 +84,34 @@ body {
   border-color: #4d6b77;
 }
 
+.btn-outline-secondary,
+.btn-outline-secondary:focus {
+  color: #276681;
+  background-color: #fffffd;
+  border-color: #276681;
+}
+
+.btn-outline-secondary:hover {
+  color: #fffffd;
+  background-color: #235e77;
+  border-color: #235e77;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active,
+.btn-outline-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-secondary.dropdown-toggle {
+  color: #fffffd;
+  background-color: #215870;
+  border-color: #215870;
+}
+
+.btn-outline-secondary.disabled,
+.btn-outline-secondary:disabled {
+  background-color: #fffffd;
+  color: #4d6b77;
+  border-color: #4d6b77;
+}
+
 .btn-danger,
 .btn-danger:focus {
   color: #fffffd;
@@ -71,6 +128,24 @@ body {
 .btn-danger.disabled,
 .btn-danger:disabled {
   background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger,
+.btn-outline-danger:focus {
+  color: #dc3545;
+  background-color: #fffffd;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  color: #fffffd;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger.disabled,
+.btn-outline-danger:disabled {
   border-color: #dc3545;
 }
 

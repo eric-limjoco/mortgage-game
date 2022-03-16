@@ -27,7 +27,7 @@
           <b-button
             class="my-0"
             size="lg"
-            variant="primary"
+            variant="outline-primary"
             @click="simulate(simulationMonths)"
             :disabled="buttonsDisabled"
           >
@@ -43,7 +43,7 @@
         <b-button-group class="px-0">
           <b-button
             size="lg"
-            variant="primary"
+            variant="outline-primary"
             @click="startRefi"
             :disabled="buttonsDisabled"
           >
@@ -52,7 +52,7 @@
           </b-button>
           <b-button
             size="lg"
-            variant="secondary"
+            variant="outline-secondary"
             @click="startCashout"
             :disabled="buttonsDisabled"
           >
@@ -61,7 +61,7 @@
           </b-button>
           <b-button
             size="lg"
-            variant="danger"
+            variant="outline-danger"
             @click="startPayoff"
             :disabled="buttonsDisabled"
           >
@@ -139,11 +139,14 @@ button {
 }
 .b-form-spinbutton,
 .b-form-spinbutton.focus {
-  background-color: #21732f;
+  color: #21732f;
   border-radius: 6px 0 0 6px;
-  color: #fff;
-  border: none;
-  border-right: 2px solid #2c3e50;
+  background-color: #fff;
+  border-color: #21732f;
+}
+.b-form-spinbutton:hover {
+  background-color: #21732f;
+  color: #fffffd;
 }
 .b-form-spinbutton.disabled {
   opacity: 0.65;

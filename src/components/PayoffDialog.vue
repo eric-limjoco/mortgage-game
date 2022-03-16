@@ -25,7 +25,7 @@
     <b-row>
       <b-button
         @click="startPayoff"
-        variant="primary"
+        variant="outline-danger"
         class= "mb-1"
       >
         <b-icon icon="house-door"></b-icon>&nbsp;

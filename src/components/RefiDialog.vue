@@ -63,7 +63,7 @@
       <b-row>
         <b-button
           @click="startRefi"
-          variant="primary"
+          variant="outline-primary"
           class= "mb-1"
         >
           <b-icon icon="arrow-repeat"></b-icon>&nbsp;

@@ -81,7 +81,7 @@
       <b-row>
         <b-button
           @click="startCashout"
-          variant="secondary"
+          variant="outline-secondary"
           class= "mb-1"
         >
           <b-icon icon="cash-stack"></b-icon>&nbsp;

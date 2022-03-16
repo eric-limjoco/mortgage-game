@@ -5,7 +5,7 @@
         <b-icon icon="cash"></b-icon>
         <span>{{ cash|toCurrency }}</span>
         <div class="income mt-1">
-          <div><b-icon icon="plus-circle"></b-icon> {{ income|toCurrency }}/month</div>
+          <div class="mb-1"><b-icon icon="plus"></b-icon> {{ income|toCurrency }}/month</div>
           <div class="payments-label">Total Payments: {{ cumulativePayments|toCurrency}}</div>
         </div>
     </b-col>

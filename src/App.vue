@@ -20,6 +20,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Lato|Montserrat:400,600&display=swap');
+@import url('vue-tour/dist/vue-tour.css');
 @import url('App.css');
 #app,
 .modal-dialog {

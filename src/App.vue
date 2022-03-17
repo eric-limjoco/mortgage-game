@@ -1,5 +1,6 @@
 <template>
   <b-container fluid id="app">
+    <v-tour name="myTour" :steps="steps"></v-tour>
     <nav-bar/>
     <game-home/>
   </b-container>
@@ -11,6 +12,19 @@ import GameHome from './components/GameHome'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      steps: [
+        {
+          target: '#v-step-outstanding-balance', // We're using document.querySelector() under the hood
+          content: `Pay off your mortgage with the least amount of money. This is your <strong>Outstanding Balance</strong>.`,
+          params: {
+            placement: 'auto-end'
+          }
+        }
+      ]
+    }
+  },
   components: {
     NavBar,
     GameHome

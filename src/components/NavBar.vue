@@ -9,7 +9,7 @@
   <b-navbar-nav class="ml-auto actions">
     <b-nav-item class="my-sm-0">
       <b-icon icon="bar-chart-line" class="my-sm-0 "></b-icon>
-      <b-icon icon="question-circle" class="mx-1 my-sm-0 "></b-icon>
+      <b-icon icon="question-circle" class="mx-1 my-sm-0" @click="runTour"></b-icon>
       <a href="" class="mx-2">{{ isLoggedIn() ? 'Sign Out' : 'Sign In' }}</a>
     </b-nav-item>
   </b-navbar-nav>
@@ -20,12 +20,11 @@ import { mapGetters } from 'vuex'
 import { BIcon } from 'bootstrap-vue'
 
 export default {
-  data () {
-    return {
-    }
-  },
   methods: {
-    ...mapGetters(['isLoggedIn'])
+    ...mapGetters(['isLoggedIn']),
+    runTour () {
+      this.$tours['myTour'].start()
+    }
   },
   components: {
     BIcon

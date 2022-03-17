@@ -182,3 +182,9 @@ body {
 .bg-secondary {
   background-color: #276681 !important;
 }
+
+.v-step {
+  background-color: rgba(33, 115, 47, 0.9) !important;
+  color: #fffffd !important;
+  font-size: 0.8rem;
+}

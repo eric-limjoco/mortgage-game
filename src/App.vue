@@ -19,7 +19,7 @@ export default {
           target: '#v-step-outstanding-balance', // We're using document.querySelector() under the hood
           content: `Pay off your mortgage with the least amount of money. This is your <strong>Outstanding Balance</strong>.`,
           params: {
-            placement: 'auto-end'
+            placement: 'bottom'
           }
         }
       ]

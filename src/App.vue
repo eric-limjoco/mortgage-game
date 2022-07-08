@@ -19,14 +19,14 @@ export default {
           target: '#v-step-outstanding-balance', // We're using document.querySelector() under the hood
           content: `Pay off your mortgage with the least amount of money. This is your <strong>outstanding balance</strong> and <strong>current interest rate.</strong>`,
           params: {
-            placement: 'bottom-end'
+            placement: 'bottom-start'
           }
         },
         {
           target: '#v-step-market-rates',
           content: `<strong>Market rates</strong> will change each month. <strong>Refinance your mortgage</strong> to save money over time!`,
           params: {
-            placement: 'bottom'
+            placement: 'bottom-end'
           }
         },
         {
@@ -40,7 +40,7 @@ export default {
           target: '#v-step-cash',
           content: `Keep an eye out on how much cash you have and <strong>pay off your mortgage when the time is right!</strong>`,
           params: {
-            placement: 'bottom'
+            placement: 'bottom-start'
           }
         }
       ]

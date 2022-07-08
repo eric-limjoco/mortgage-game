@@ -54,6 +54,13 @@ export default {
     state.optimalRateHistory.push(state.loanRate)
     state.showOptimal = false
   },
+  loginUser (state, userData) {
+    state.userFirstName = userData.firstName
+    state.userLastName = userData.lastName
+    state.userCompany = userData.company
+    state.userEmail = userData.email
+    state.loggedIn = true
+  },
   setTheme (state, theme) {
     state.theme = theme
   },

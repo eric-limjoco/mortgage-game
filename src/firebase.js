@@ -14,9 +14,13 @@ const firebaseApp = firebase.initializeApp(config)
 
 const db = firebaseApp.firestore()
 const usersCollection = db.collection('users')
+const scoresCollection = db.collection('scores')
 
 export const createUser = user => {
-  return usersCollection.add(user)
+  return usersCollection.add({
+    date: new Date(),
+    ...user
+  })
 }
 
 export const getUser = async id => {
@@ -35,6 +39,19 @@ export const updateUser = (id, user) => {
 
 export const deleteUser = id => {
   return usersCollection.doc(id).delete()
+}
+
+export const createScore = score => {
+  return scoresCollection.add(score)
+}
+
+export const getUserScores = async (userEmail) => {
+  let scores = []
+  const snapshot = await scoresCollection.where('email', '==', userEmail).get()
+  if (!snapshot.empty) {
+    snapshot.forEach(s => scores.push(s.data()))
+  }
+  return scores
 }
 
 // export const useLoadUsers = () => {

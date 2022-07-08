@@ -9,6 +9,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     theme: 'light-theme',
+    userFirstName: '',
+    userLastName: '',
+    userCompany: '',
+    userEmail: '',
     loggedIn: false,
     cash: 0,
     income: 4000,

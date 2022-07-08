@@ -28,6 +28,7 @@ import FinancialInfo from './FinancialInfo.vue'
 import LoanInfo from './LoanInfo.vue'
 import RatesInfo from './RatesInfo.vue'
 import GameOverDialog from './GameOverDialog.vue'
+import { createScore } from '../firebase'
 
 export default {
   data () {
@@ -35,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['message', 'gameOver', 'savingsScore'])
+    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore'])
   },
   mounted () {
     this.initState()
@@ -47,6 +48,11 @@ export default {
     gameOver () {
       if (this.gameOver) {
         this.calculateSavingsScore()
+        createScore({
+          email: this.userEmail.length > 0 ? this.userEmail : '(not logged in)',
+          score: this.savingsScore,
+          date: new Date()
+        })
         this.$refs['game-over-dialog'].showDialog()
       }
     }

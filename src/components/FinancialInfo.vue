@@ -8,6 +8,7 @@
           <div class="mb-1"><b-icon icon="plus"></b-icon> {{ income|toCurrency }}/month</div>
           <div class="payments-label">Total Payments: {{ cumulativePayments|toCurrency}}</div>
         </div>
+        <span id="v-step-cash"></span>
     </b-col>
     <b-col class="progress-section">
       <b-icon icon="cash"></b-icon>

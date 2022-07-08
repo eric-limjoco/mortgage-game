@@ -10,6 +10,7 @@
   </div>
   <small>Term: {{ newTerm }} months</small><br>
   <small>Fees: ${{ newFees }}</small>
+  <span id="v-step-market-rates"></span>
 </div>
 </template>
 <script>

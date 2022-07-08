@@ -24,6 +24,7 @@
             style="font-size:.8rem"
           >
           </b-form-spinbutton>
+          <span id="v-step-play"></span>
           <b-button
             class="my-0"
             size="lg"

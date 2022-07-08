@@ -1,9 +1,10 @@
 <template>
 <div class="info">
-  <h5><b-icon icon="house-door"></b-icon><span id="v-step-outstanding-balance"></span> {{ balance|toCurrency }}</h5>
+  <h5><b-icon icon="house-door"></b-icon>{{ balance|toCurrency }}</h5>
   <div>Your Interest Rate</div>
   <div class="h5">
     {{ loanRate|toRate }}
+    <span id="v-step-outstanding-balance"></span>
   </div>
   <small>{{ remainingTerm }} months remaining</small><br>
   <small>Monthly Payment: {{ payment|toCurrency }}</small>

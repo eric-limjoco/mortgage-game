@@ -6,6 +6,7 @@
       ok-title="Close"
       ok-only
       hide-header-close
+      @hidden="hideDialog"
       title="Leaderboard"
     >
       <b-container fluid>
@@ -59,7 +60,6 @@ export default {
           rank: i + 1
         }
         if (this.userEmail.length > 0 && this.scores[i].email === this.userEmail) {
-          console.log('onLeaderboard!!!!')
           this.onLeaderboard = true
           t['_rowVariant'] = 'success'
         }

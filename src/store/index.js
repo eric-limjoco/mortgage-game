@@ -14,6 +14,7 @@ export default new Vuex.Store({
     userCompany: '',
     userEmail: '',
     loggedIn: false,
+    month: 0,
     cash: 0,
     income: 4000,
     cumulativePayments: 0,
@@ -29,6 +30,8 @@ export default new Vuex.Store({
     userRateHistory: [],
     optimalRateHistory: [],
     optimalRateHistory2: [],
+    refiHistory: [],
+    cashoutHistory: [],
     threshold: 1.0,
     newRate: 4,
     minRate: 4,
@@ -46,7 +49,9 @@ export default new Vuex.Store({
     startingPayment: 1909.66,
     startingTerm: 360,
     startBalance: 400000,
-    startingRate: 4
+    startingRate: 4,
+    refiMonth: false,
+    cashoutMonth: false
   },
   getters,
   mutations,

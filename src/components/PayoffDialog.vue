@@ -46,13 +46,19 @@
         {{ errorMessage }}
       </b-col>
     </b-row>
-    <b-row class="h2">
+    <b-row
+      class="h2"
+      v-if="!refiMonth && !cashoutMonth"
+    >
       <b-col>
         <div class="label">Cash</div>
         <span>{{ cash|toCurrency }}</span>
       </b-col>
     </b-row>
-    <b-row class="h2">
+    <b-row
+      class="h2"
+      v-if="!refiMonth && !cashoutMonth"
+    >
       <b-col>
         <div class="label">Current Balance</div>
         <span>{{ balance|toCurrency }}</span>
@@ -69,17 +75,21 @@ export default {
   data () {
     return {
       show: false,
-      errorMessage: "You don't have enough cash to payoff your mortgage.",
       confirmationTitle: 'Mortgage Payoff Complete'
     }
   },
   computed: {
-    ...mapState(['cash', 'balance']),
+    ...mapState(['cash', 'balance', 'refiMonth', 'cashoutMonth']),
     canPayoff () {
-      return this.cash >= this.balance
+      return this.cash >= this.balance && !this.refiMonth && !this.cashoutMonth
     },
     title () {
       return this.canPayoff ? 'Payoff' : 'Cannot Payoff Mortgage'
+    },
+    errorMessage () {
+      if (this.refiMonth) return 'You have already refinanced your mortgage this month.'
+      else if (this.cashoutMonth) return 'You have already cashed out your mortgage this month.'
+      else if (this.cash < this.balance) return "You don't have enough cash to payoff your mortgage."
     }
   },
   methods: {

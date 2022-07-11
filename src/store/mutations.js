@@ -25,6 +25,7 @@ export default {
   initState (state) {
     state.loanRate = 4
     state.startingRate = state.loanRate
+    state.month = 0
     state.cash = 0
     state.income = 4000
     state.balance = 400000
@@ -41,6 +42,8 @@ export default {
     state.rateHistory = []
     state.userRateHistory = []
     state.optimalRateHistory = []
+    state.refiHistory = []
+    state.cashoutHistory = []
     state.threshold = 1.0
     state.newRate = 4
     state.message = ''
@@ -53,6 +56,8 @@ export default {
     state.userRateHistory.push(state.loanRate)
     state.optimalRateHistory.push(state.loanRate)
     state.showOptimal = false
+    state.refiMonth = false
+    state.cashoutMonth = false
   },
   loginUser (state, userData) {
     state.userFirstName = userData.firstName
@@ -83,6 +88,9 @@ export default {
     if (state.gameOver) return
     state.cumulativePayments += state.payment
     state.cash = state.cash + state.income - state.payment
+    state.refiMonth = false
+    state.cashoutMonth = false
+    state.month += 1
     if (state.cash < 0) state.gameOver = true
     else {
       let principal = principalPayment(state.balance, state.remainingTerm, state.loanRate)
@@ -97,6 +105,8 @@ export default {
     state.cash -= state.newFees
     state.cumulativePayments += state.newFees
     state.payment = monthlyPayment(state.balance, state.remainingTerm, state.loanRate)
+    state.refiMonth = true
+    state.refiHistory.push(state.month)
   },
   cashout (state) {
     let cashoutAmount = state.originalBalance - state.balance
@@ -106,6 +116,8 @@ export default {
     state.cash = state.cash - state.newFees + cashoutAmount
     state.cumulativePayments += state.newFees
     state.payment = monthlyPayment(state.balance, state.remainingTerm, state.loanRate)
+    state.cashoutMonth = true
+    state.cashoutHistory.push(state.month)
   },
   payoff (state) {
     state.cash = state.cash - state.balance

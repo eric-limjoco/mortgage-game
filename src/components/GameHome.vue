@@ -36,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore', 'rateHistory', 'userRateHistory'])
+    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore', 'rateHistory', 'userRateHistory', 'refiHistory', 'cashoutHistory'])
   },
   mounted () {
     this.initState()
@@ -53,6 +53,8 @@ export default {
           score: this.savingsScore,
           rateHistory: this.rateHistory,
           userRateHistory: this.userRateHistory,
+          refiHistory: this.refiHistory,
+          cashoutHistory: this.cashoutHistory,
           date: new Date()
         })
         this.$refs['game-over-dialog'].showDialog()

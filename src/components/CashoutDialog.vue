@@ -102,13 +102,18 @@
           {{ errorMessage }}
         </b-col>
       </b-row>
-      <b-row class="h2">
+      <b-row
+        class="h2"
+        v-if="!refiMonth && !cashoutMonth"
+      >
         <b-col>
           <b-icon icon="cash"></b-icon>
           <span>{{ cash|toCurrency }}</span>
         </b-col>
       </b-row>
-      <b-row>
+      <b-row
+        v-if="!refiMonth && !cashoutMonth"
+      >
         <b-col>
           <strong>Cashout Refinancing Fees: {{ newFees | toCurrency }}</strong>
         </b-col>
@@ -171,14 +176,13 @@ export default {
     return {
       show: false,
       showConfirmation: false,
-      errorMessage: "You don't have enough cash to cashout refinance your mortgage.",
       confirmationTitle: ' Cashout Refinance Complete'
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'loanRate', 'newRate', 'originalBalance', 'payment', 'remainingTerm', 'newTerm', 'balance']),
+    ...mapState(['cash', 'newFees', 'loanRate', 'newRate', 'originalBalance', 'payment', 'remainingTerm', 'newTerm', 'balance', 'refiMonth', 'cashoutMonth']),
     canCashout () {
-      return this.cash >= this.newFees
+      return this.cash >= this.newFees && !this.cashoutMonth & !this.refiMonth
     },
     title () {
       return this.canCashout ? 'Cashout Refinance' : 'Cannot Cashout Mortgage'
@@ -188,6 +192,11 @@ export default {
     },
     cashoutAmount () {
       return this.originalBalance - this.balance
+    },
+    errorMessage () {
+      if (this.cashoutMonth) return 'You have already cashed out your mortgage this month.'
+      else if (this.refiMonth) return 'You have already refinanced your mortgage this month.'
+      else if (this.cash < this.newFees) return "You don't have enough cash to cashout refinance your mortgage."
     }
   },
   methods: {

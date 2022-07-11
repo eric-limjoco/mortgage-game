@@ -20,7 +20,10 @@
       <b-nav-item class="my-sm-0">
         <b-icon icon="bar-chart-line" class="my-sm-0" @click="showLeaderboard()"></b-icon>
         <b-icon icon="question-circle" class="mx-1 my-sm-0" @click="runTour"></b-icon>
-        <b-button @click="startSignIn()" class="mx-2">{{ isLoggedIn() ? 'My Profile' : 'Sign In' }}</b-button>
+        <b-button @click="startSignIn()" class="mx-2">
+          <span id="v-step-sign-in"></span>
+          {{ isLoggedIn() ? 'My Profile' : 'Sign In' }}
+        </b-button>
       </b-nav-item>
     </b-navbar-nav>
   </b-navbar>

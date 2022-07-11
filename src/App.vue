@@ -42,6 +42,13 @@ export default {
           params: {
             placement: 'bottom-start'
           }
+        },
+        {
+          target: '#v-step-sign-in',
+          content: `Sign in so that you are entered to <strong>win a prize for your high score!</strong>`,
+          params: {
+            placement: 'left-end'
+          }
         }
       ]
     }

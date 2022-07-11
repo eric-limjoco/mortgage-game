@@ -66,6 +66,13 @@ export default {
     state.userEmail = userData.email
     state.loggedIn = true
   },
+  logoutUser (state) {
+    state.userFirstName = ''
+    state.userLastName = ''
+    state.userCompany = ''
+    state.userEmail = ''
+    state.loggedIn = false
+  },
   setTheme (state, theme) {
     state.theme = theme
   },
@@ -151,7 +158,7 @@ export default {
     var maxSavings = totalPaymentsNaive - lowestPayments
 
     state.savingsScore = 0
-    if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings).toFixed(2)
+    if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings)
 
     state.lowestPayments = lowestPayments
     state.totalPaymentsNaive = totalPaymentsNaive

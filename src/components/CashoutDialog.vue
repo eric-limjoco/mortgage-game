@@ -182,7 +182,7 @@ export default {
   computed: {
     ...mapState(['cash', 'newFees', 'loanRate', 'newRate', 'originalBalance', 'payment', 'remainingTerm', 'newTerm', 'balance', 'refiMonth', 'cashoutMonth']),
     canCashout () {
-      return this.cash >= this.newFees && !this.cashoutMonth & !this.refiMonth
+      return this.cash >= this.newFees && !this.cashoutMonth && !this.refiMonth
     },
     title () {
       return this.canCashout ? 'Cashout Refinance' : 'Cannot Cashout Mortgage'

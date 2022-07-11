@@ -24,7 +24,7 @@
       <b-row class="h4 mb-3">
         <b-col>
           <div class="label">Savings Score</div>
-          {{ savingsScore }}%
+          {{ savingsScore.toFixed(2) }}%
         </b-col>
       </b-row>
       <b-row class="h4 mb-3">

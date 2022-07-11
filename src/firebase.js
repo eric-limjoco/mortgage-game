@@ -47,7 +47,16 @@ export const createScore = score => {
 
 export const getUserScores = async (userEmail) => {
   let scores = []
-  const snapshot = await scoresCollection.where('email', '==', userEmail).get()
+  const snapshot = await scoresCollection.where('email', '==', userEmail).orderBy('date', 'desc').get()
+  if (!snapshot.empty) {
+    snapshot.forEach(s => scores.push(s.data()))
+  }
+  return scores
+}
+
+export const getAllScores = async () => {
+  let scores = []
+  const snapshot = await scoresCollection.orderBy('score', 'desc').limit(20).get()
   if (!snapshot.empty) {
     snapshot.forEach(s => scores.push(s.data()))
   }

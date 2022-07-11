@@ -36,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore'])
+    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore', 'rateHistory', 'userRateHistory'])
   },
   mounted () {
     this.initState()
@@ -51,6 +51,8 @@ export default {
         createScore({
           email: this.userEmail.length > 0 ? this.userEmail : '(not logged in)',
           score: this.savingsScore,
+          rateHistory: this.rateHistory,
+          userRateHistory: this.userRateHistory,
           date: new Date()
         })
         this.$refs['game-over-dialog'].showDialog()

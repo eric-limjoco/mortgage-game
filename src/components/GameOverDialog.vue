@@ -5,6 +5,7 @@
     hide-header-close
     ok-only
     ok-title="Play Again"
+    @hidden="initState"
     @ok="initState"
   >
     <p class="mb-1">You have successfully paid off your mortgage!</p>

@@ -17,22 +17,19 @@
       <b-nav-item class="my-sm-0">
         <b-icon icon="bar-chart-line" class="my-sm-0 "></b-icon>
         <b-icon icon="question-circle" class="mx-1 my-sm-0" @click="runTour"></b-icon>
-        <b-button @click="startSignIn()" class="mx-2">{{ isLoggedIn() ? userFirstName : 'Sign In' }}</b-button>
+        <b-button @click="startSignIn()" class="mx-2">{{ isLoggedIn() ? 'My Profile' : 'Sign In' }}</b-button>
       </b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { BIcon } from 'bootstrap-vue'
 import SignInDialog from './SignInDialog.vue'
 import ProfileDialog from './ProfileDialog.vue'
 
 export default {
-  computed: {
-    ...mapState(['userFirstName'])
-  },
   methods: {
     ...mapGetters(['isLoggedIn']),
     runTour () {
@@ -64,5 +61,9 @@ a {
 }
 .navbar-brand {
   font-family: 'Montserrat';
+}
+
+button {
+  font-size: .8rem;
 }
 </style>

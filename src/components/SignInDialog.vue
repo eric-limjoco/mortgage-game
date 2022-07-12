@@ -100,8 +100,7 @@ export default {
       firstNameState: null,
       lastNameState: null,
       companyState: null,
-      emailState: null,
-      users: {}
+      emailState: null
     }
   },
   methods: {

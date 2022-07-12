@@ -36,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userEmail', 'message', 'gameOver', 'savingsScore', 'rateHistory', 'userRateHistory', 'refiHistory', 'cashoutHistory'])
+    ...mapState(['loggedIn', 'userEmail', 'gameOver', 'savingsScore', 'rateHistory', 'userRateHistory', 'refiHistory', 'cashoutHistory'])
   },
   mounted () {
     this.initState()
@@ -48,15 +48,17 @@ export default {
     gameOver () {
       if (this.gameOver) {
         this.calculateSavingsScore()
-        createScore({
-          email: this.userEmail.length > 0 ? this.userEmail : '(not logged in)',
-          score: this.savingsScore,
-          rateHistory: this.rateHistory,
-          userRateHistory: this.userRateHistory,
-          refiHistory: this.refiHistory,
-          cashoutHistory: this.cashoutHistory,
-          date: new Date()
-        })
+        if (this.loggedIn) {
+          createScore({
+            email: this.userEmail.length > 0 ? this.userEmail : '(not logged in)',
+            score: this.savingsScore,
+            rateHistory: this.rateHistory,
+            userRateHistory: this.userRateHistory,
+            refiHistory: this.refiHistory,
+            cashoutHistory: this.cashoutHistory,
+            date: new Date()
+          })
+        }
         this.$refs['game-over-dialog'].showDialog()
       }
     }

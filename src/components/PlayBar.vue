@@ -122,6 +122,13 @@ export default {
       return this.simulationMonths > 1 ? `Run ${this.simulationMonths} Months` : `Run ${this.simulationMonths} Month`
     }
   },
+  watch: {
+    remainingTerm () {
+      if (this.simulationMonths > this.remainingTerm) {
+        this.simulationMonths = this.remainingTerm
+      }
+    }
+  },
   components: {
     BIcon,
     BModal,

@@ -13,7 +13,7 @@
   <b-container fluid class="px-0">
       <b-row class="mb-2">
         <span id="v-step-play"></span>
-        <b-button-group class="px-0">
+        <b-button-group class="px-0 play-stop">
           <b-button
             v-if="!isPlaying"
             size="lg"
@@ -190,6 +190,10 @@ button {
   border-radius: 6px;
   font-size: .8rem;
   margin-bottom: .2rem;
+}
+.play-stop button {
+  font-size: 1.2rem;
+  height: 60px;
 }
 .b-form-spinbutton,
 .b-form-spinbutton.focus {

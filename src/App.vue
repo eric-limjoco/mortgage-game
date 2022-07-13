@@ -31,7 +31,10 @@ export default {
         },
         {
           target: '#v-step-play',
-          content: `<strong>Set the number of months</strong> to pay your monthly payment and <strong>press Go</strong> to start the simulation.<br><br>Use the buttons below to <strong>refinance</strong>, <strong>cashout</strong> and <strong>payoff your mortgage</strong>.`,
+          content: `
+          Press <strong>Play</strong> to start the simulation. <strong>Stop</strong> when you want to <strong>refinance</strong> or <strong>pay off</strong> your mortgage.<br><br>
+          You can also <strong>set the number of months</strong> to pay your monthly payment and <strong>press Go</strong> to start the simulation.<br><br>
+          Use the buttons below to <strong>refinance</strong> and <strong>payoff your mortgage</strong>.`,
           params: {
             placement: 'top'
           }

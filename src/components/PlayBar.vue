@@ -12,6 +12,30 @@
   />
   <b-container fluid class="px-0">
       <b-row class="mb-2">
+        <span id="v-step-play"></span>
+        <b-button-group class="px-0">
+          <b-button
+            v-if="!isPlaying"
+            size="lg"
+            variant="outline-primary"
+            @click="isPlaying=true"
+            :disabled="buttonsDisabled"
+          >
+            <b-icon icon="play"></b-icon>
+            Play
+          </b-button>
+          <b-button
+            v-else
+            size="lg"
+            variant="outline-primary"
+            @click="isPlaying=false"
+          >
+            <b-icon icon="stop"></b-icon>
+            Stop
+          </b-button>
+        </b-button-group>
+      </b-row>
+      <b-row class="mb-2">
         <b-button-group class="px-0">
           <b-form-spinbutton
             id="simulation-months-input"
@@ -24,7 +48,6 @@
             style="font-size:.8rem"
           >
           </b-form-spinbutton>
-          <span id="v-step-play"></span>
           <b-button
             class="my-0"
             size="lg"
@@ -88,11 +111,12 @@ export default {
       simulationMonths: 12,
       modalTitle: '',
       modalMessage: '',
-      buttonsDisabled: false
+      buttonsDisabled: false,
+      isPlaying: false
     }
   },
   computed: {
-    ...mapState(['cash', 'newFees', 'balance', 'savingsScore', 'remainingTerm'])
+    ...mapState(['cash', 'newFees', 'balance', 'savingsScore', 'remainingTerm', 'gameOver'])
   },
   methods: {
     ...mapMutations(['refi', 'cashout', 'payoff', 'makePayment', 'updateRates', 'initState']),
@@ -124,9 +148,27 @@ export default {
     }
   },
   watch: {
+    async isPlaying () {
+      if (this.isPlaying) {
+        this.buttonsDisabled = true
+        while (this.isPlaying) {
+          this.makePayment()
+          this.updateRates()
+          await this.sleep(50)
+        }
+      } else {
+        this.buttonsDisabled = false
+      }
+    },
     remainingTerm () {
       if (this.simulationMonths > this.remainingTerm) {
         this.simulationMonths = this.remainingTerm
+      }
+    },
+    gameOver () {
+      if (this.gameOver) {
+        this.isPlaying = false
+        this.buttonsDisabled = false
       }
     }
   },

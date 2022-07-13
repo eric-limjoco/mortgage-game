@@ -15,7 +15,7 @@
   type="dark"
   class="nav-bar"
   >
-    <b-navbar-brand>Mortgage Game</b-navbar-brand>
+    <b-navbar-brand>AD&amp;Co Mortgage Game</b-navbar-brand>
     <b-navbar-nav class="ml-auto actions">
       <b-nav-item class="my-sm-0">
         <b-icon icon="bar-chart-line" class="my-sm-0" @click="showLeaderboard()"></b-icon>

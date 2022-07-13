@@ -22,7 +22,7 @@ export default new Vuex.Store({
     balance: 400000,
     remainingTerm: 360,
     loanRate: 5.5,
-    payment: 1909.66,
+    payment: 2271.16,
     newTerm: 360,
     newFees: 4000,
     change: 0.005,

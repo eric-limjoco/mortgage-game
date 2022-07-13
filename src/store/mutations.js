@@ -31,7 +31,7 @@ export default {
     state.balance = 400000
     state.remainingTerm = 360
     state.startingTerm = state.remainingTerm
-    state.payment = 1909.66
+    state.payment = 2271.16
     state.startingPayment = state.payment
     state.cumulativePayments = 0
     state.originalBalance = 400000

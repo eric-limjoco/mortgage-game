@@ -23,7 +23,7 @@ function scheduledBalance (balance, term, loanRate, age) {
 
 export default {
   initState (state) {
-    state.loanRate = 4
+    state.loanRate = 5.5
     state.startingRate = state.loanRate
     state.month = 0
     state.cash = 0
@@ -45,7 +45,7 @@ export default {
     state.refiHistory = []
     state.cashoutHistory = []
     state.threshold = 1.0
-    state.newRate = 4
+    state.newRate = 5.5
     state.message = ''
     state.gameOver = false
     state.go = false
@@ -84,6 +84,7 @@ export default {
     if (bigJump) state.change = randN(0, 0.25)
     else state.change = randN(state.change / 10, 0.05)
     state.newRate += state.change
+    if (state.newRate <= 0) state.newRate = 0
     if (state.newRate < state.minRate) state.minRate = state.newRate
     if (state.newRate < state.recordRate) state.recordRate = state.newRate - state.threshold
     state.userRateHistory.push(state.loanRate)

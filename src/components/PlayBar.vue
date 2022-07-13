@@ -35,7 +35,10 @@
           </b-button>
         </b-button-group>
       </b-row>
-      <b-row class="mb-2">
+      <b-row
+        v-if="false"
+        class="mb-2"
+      >
         <b-button-group class="px-0">
           <b-form-spinbutton
             id="simulation-months-input"

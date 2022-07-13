@@ -32,8 +32,8 @@ export default {
         {
           target: '#v-step-play',
           content: `
-          Press <strong>Play</strong> to start the simulation. <strong>Stop</strong> when you want to <strong>refinance</strong> or <strong>pay off</strong> your mortgage.<br><br>
-          You can also <strong>set the number of months</strong> to pay your monthly payment and <strong>press Go</strong> to start the simulation.<br><br>
+          Press <strong>Play</strong> to start the simulation, where each month rates will change and you will pay your monthly payment. <strong>Stop</strong> when you want to <strong>refinance</strong> or <strong>pay off</strong> your mortgage.<br><br>
+          You can also <strong>set the number of months</strong> to simulate and <strong>press Go</strong> to start the simulation.<br><br>
           Use the buttons below to <strong>refinance</strong> and <strong>payoff your mortgage</strong>.`,
           params: {
             placement: 'top'

@@ -15,7 +15,7 @@
   type="dark"
   class="nav-bar"
   >
-    <b-navbar-brand>AD&amp;Co Mortgage Game</b-navbar-brand>
+    <b-navbar-brand class="game-title">AD&amp;Co Mortgage Game</b-navbar-brand>
     <b-navbar-nav class="ml-auto actions">
       <b-nav-item class="my-sm-0">
         <b-icon icon="bar-chart-line" class="my-sm-0" @click="showLeaderboard()"></b-icon>
@@ -76,5 +76,17 @@ a {
 
 button {
   font-size: .8rem;
+}
+
+@media only screen and (max-width: 370px) {
+  .game-title {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .game-title {
+    font-size: 0.9rem;
+  }
 }
 </style>

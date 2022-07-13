@@ -39,9 +39,7 @@ export default {
         },
         showLegend: true,
         legend: {
-          x: 1,
-          y: 1,
-          xanchor: 'right',
+          orientation: 'h',
           font: {
             family: 'Lato',
             color: '#969696'

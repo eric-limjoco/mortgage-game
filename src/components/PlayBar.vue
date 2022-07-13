@@ -52,6 +52,7 @@
             Refinance
           </b-button>
           <b-button
+            v-if="false"
             size="lg"
             variant="outline-secondary"
             @click="startCashout"
@@ -139,11 +140,14 @@ export default {
 }
 </script>
 <style scoped>
+.row .b-form-spinbutton,
+.row button {
+  width: 50%;
+}
 button {
   border-radius: 6px;
   font-size: .8rem;
   margin-bottom: .2rem;
-  width: 100%;
 }
 .b-form-spinbutton,
 .b-form-spinbutton.focus {

@@ -20,6 +20,29 @@ function scheduledBalance (balance, term, loanRate, age) {
   let r = loanRate / 1200
   return balance * (Math.pow(1 + r, term) - Math.pow(1 + r, age)) / (Math.pow(1 + r, term) - 1)
 }
+function calculateOptimalPayment (age, rate, startingPayment, balance, startingTerm, cash, newFees, income) {
+  var currentPayments = startingPayment * age
+  var newPayments = 0
+  var refiBalance = balance
+  var refiPayment = monthlyPayment(refiBalance, startingTerm, rate)
+
+  //re-simulate optimal strategy
+  var simCash = cash - newFees
+  var currentBalance = refiBalance
+  var i
+
+  // simulate new loan to maturity
+  for (i=0;i<startingTerm;i++) {  
+    simCash += income - refiPayment
+    newPayments += refiPayment
+    currentBalance = scheduledBalance(refiBalance, startingTerm, rate, i);
+    if (simCash > currentBalance) {
+      break
+    }
+  }
+  var totalPayments = currentPayments + newPayments + currentBalance
+  return totalPayments
+}
 
 export default {
   initState (state) {
@@ -41,6 +64,9 @@ export default {
     state.change = 0.005
     state.rateHistory = []
     state.userRateHistory = []
+    state.optimalPayments = 671130.87
+    state.optimalRefiAge = 0
+    state.optimalRate = 5.5
     state.optimalRateHistory = []
     state.refiHistory = []
     state.cashoutHistory = []
@@ -87,6 +113,16 @@ export default {
     if (state.newRate <= 0) state.newRate = 0
     if (state.newRate < state.minRate) state.minRate = state.newRate
     if (state.newRate < state.recordRate) state.recordRate = state.newRate - state.threshold
+    
+    var newPayment = calculateOptimalPayment(state.month, state.newRate, state.startingPayment, state.balance, state.startingTerm, state.cash, state.newFees, state.income)
+
+    if (newPayment < state.optimalPayments)
+    {
+      state.optimalPayments = newPayment
+      state.optimalRate = state.newRate
+      state.optimalRefiAge = state.month
+    }
+    
     state.userRateHistory.push(state.loanRate)
     state.rateHistory.push(state.newRate)
     state.optimalRateHistory.push(state.minRate)
@@ -133,7 +169,7 @@ export default {
     state.balance = 0
     state.gameOver = true
   },
-  calculateSavingsScore (state) {
+  calculateSavingsScore_old (state) {
     // assume you refi-ed at min rate
     let payoffAge = 142
     let payoffBal = scheduledBalance(state.startingBalance, state.startingTerm, state.startingRate, payoffAge)
@@ -151,7 +187,7 @@ export default {
         state.optimalRateHistory[i] = oMinRate
       }
     }
-    // not completely accurate because we didnt re-amortize at refi;
+    // not completely accurate because we didnt re-amortize at refi
     let totalPaymentsOMinRate = (state.startingPayment * oMinAge) + (oMinPayment * (payoffAge - oMinAge)) + payoffBal
 
     var lowestPayments = Math.min(totalPaymentsNaive, totalPaymentsOMinRate)
@@ -161,7 +197,29 @@ export default {
     state.savingsScore = 0
     if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings)
 
-    state.lowestPayments = lowestPayments
+    state.totalPaymentsNaive = totalPaymentsNaive
+    state.maxSavings = maxSavings
+    state.savings = savings
+    state.showOptimal = true
+  },
+  calculateSavingsScore (state) {
+    var totalPaymentsNaive = state.startingPayment * state.startingTerm
+    var i
+    for (let i = 0; i < state.month; i++) {
+      if (i < state.optimalRefiAge) {
+        state.optimalRateHistory[i] = state.startingRate
+      } else {
+        state.optimalRateHistory[i] = state.optimalRate
+      }
+    }
+   
+    var lowestPayments = Math.min(state.totalPaymentsNaive, state.optimalPayments)
+    var savings = totalPaymentsNaive - state.cumulativePayments
+    var maxSavings = totalPaymentsNaive - state.optimalPayments
+
+    state.savingsScore = 0
+    if (maxSavings !== 0) state.savingsScore = (100 * savings / maxSavings)
+
     state.totalPaymentsNaive = totalPaymentsNaive
     state.maxSavings = maxSavings
     state.savings = savings

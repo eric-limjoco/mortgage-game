@@ -1,5 +1,8 @@
 <template>
 <div class="game">
+  <disclaimer-dialog
+    ref="disclaimer-dialog"
+  />
   <game-over-dialog
     ref="game-over-dialog"
   />
@@ -28,6 +31,7 @@ import FinancialInfo from './FinancialInfo.vue'
 import LoanInfo from './LoanInfo.vue'
 import RatesInfo from './RatesInfo.vue'
 import GameOverDialog from './GameOverDialog.vue'
+import DisclaimerDialog from './DisclaimerDialog.vue'
 import { createScore } from '../firebase'
 
 export default {
@@ -40,6 +44,7 @@ export default {
   },
   mounted () {
     this.initState()
+    this.$refs['disclaimer-dialog'].showDialog()
   },
   methods: {
     ...mapMutations(['initState', 'calculateSavingsScore'])
@@ -69,7 +74,8 @@ export default {
     FinancialInfo,
     LoanInfo,
     RatesInfo,
-    GameOverDialog
+    GameOverDialog,
+    DisclaimerDialog
   }
 }
 </script>

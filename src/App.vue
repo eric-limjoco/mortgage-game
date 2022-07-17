@@ -55,9 +55,6 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.$tours['myTour'].start()
-  },
   components: {
     NavBar,
     GameHome
